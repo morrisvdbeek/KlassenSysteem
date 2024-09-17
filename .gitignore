@@ -9,3 +9,86 @@ KlassenSysteem/klassensysteem.client/obj/
 # Ignore bin directories if needed
 KlassenSysteem/KlassenSysteem.Server/bin/
 KlassenSysteem/klassensysteem.client/bin/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log*
+package-lock.json
+yarn.lock
+
+# Build output
+dist/
+build/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.suo
+*.user
+*.userossc
+*.sln.docstates
+
+# ASP.NET Core
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.dbmdl
+*.log
+*.cache
+
+# ASP.NET files that are user-specific
+*.suo
+*.user
+*.userossc
+*.ncb
+*.sdf
+*.opensdf
+*.vssscc
+*.vscode
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Environment files
+.env
+*.env
+
+# Other files to ignore
+*.pid
+*.seed
+*.tgz
+*.gz
+*.zip
+*.tar
+*.7z
+*.rar
+
+# Vue.js / Nuxt.js
+nuxt/
+.cache/
+.nuxt/
+*.local
+*.local.*
