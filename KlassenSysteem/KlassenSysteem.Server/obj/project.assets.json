@@ -459,23 +459,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bas\\.nuget\\packages\\": {},
+    "C:\\Users\\morri\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Klassensysteem\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem.Server\\KlassenSysteem.Server.csproj",
+      "projectUniqueName": "C:\\Users\\morri\\Desktop\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem.Server\\KlassenSysteem.Server.csproj",
       "projectName": "KlassenSysteem.Server",
-      "projectPath": "C:\\Klassensysteem\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem.Server\\KlassenSysteem.Server.csproj",
-      "packagesPath": "C:\\Users\\bas\\.nuget\\packages\\",
-      "outputPath": "C:\\Klassensysteem\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem.Server\\obj\\",
+      "projectPath": "C:\\Users\\morri\\Desktop\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem.Server\\KlassenSysteem.Server.csproj",
+      "packagesPath": "C:\\Users\\morri\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\morri\\Desktop\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\bas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\morri\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -536,7 +536,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

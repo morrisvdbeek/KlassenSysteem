@@ -1,3 +1,11 @@
 # Ignore the .vs directory and all its contents
 KlassenSysteem/KlassenSysteem/.vs/
 KlassenSysteem/.vs/
+
+# Ignore build artifacts
+KlassenSysteem/KlassenSysteem.Server/obj/
+KlassenSysteem/klassensysteem.client/obj/
+
+# Ignore bin directories if needed
+KlassenSysteem/KlassenSysteem.Server/bin/
+KlassenSysteem/klassensysteem.client/bin/
