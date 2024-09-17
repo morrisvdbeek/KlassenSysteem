@@ -1,0 +1,6 @@
+@KlassenSysteem.Server_HostAddress = http://localhost:5206
+
+GET {{KlassenSysteem.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

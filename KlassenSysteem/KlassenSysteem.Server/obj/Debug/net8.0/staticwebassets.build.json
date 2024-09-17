@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "Gl9orcZPZ8Z2w1moiKvY4Kum2hJQfEhu8Qf9ijEX6u4=",
+  "Source": "KlassenSysteem.Server",
+  "BasePath": "_content/KlassenSysteem.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\morri\\Desktop\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem\\klassensysteem.client\\klassensysteem.client.esproj",
+      "Version": 2,
+      "Source": "klassensysteem.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\KlassenSysteem.Server.props" />
+</Project>
