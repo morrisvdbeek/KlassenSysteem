@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KlassenSysteem.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1cb4a9b5c1da53668c640bbd23ec83306783bbd8")]
 [assembly: System.Reflection.AssemblyProductAttribute("KlassenSysteem.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KlassenSysteem.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
