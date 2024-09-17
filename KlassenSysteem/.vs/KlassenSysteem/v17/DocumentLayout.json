@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\morri\\Desktop\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem\\",
+  "WorkspaceRootPath": "C:\\Klassensysteem\\KlassenSysteem\\KlassenSysteem\\",
   "Documents": [],
   "DocumentGroupContainers": [
     {
@@ -13,15 +13,11 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+              "Name": "ST:0:0:{99b8fa2f-ab90-4f57-9c32-949f146f1914}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{26341fe2-71dd-46fd-bb1b-2e51a92a0d64}"
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

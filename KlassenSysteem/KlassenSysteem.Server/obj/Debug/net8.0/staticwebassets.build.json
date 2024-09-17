@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "Gl9orcZPZ8Z2w1moiKvY4Kum2hJQfEhu8Qf9ijEX6u4=",
+  "Hash": "WoMRRXMrXujRUS+ZBAmWTEGv6eLNGxkjlZjy/eJth3s=",
   "Source": "KlassenSysteem.Server",
   "BasePath": "_content/KlassenSysteem.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\morri\\Desktop\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem\\klassensysteem.client\\klassensysteem.client.esproj",
+      "Identity": "C:\\Klassensysteem\\KlassenSysteem\\KlassenSysteem\\klassensysteem.client\\klassensysteem.client.esproj",
       "Version": 2,
       "Source": "klassensysteem.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
