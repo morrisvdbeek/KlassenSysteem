@@ -1,3 +1,0 @@
-C:\Users\morri\Desktop\KlassenSysteem\KlassenSysteem\KlassenSysteem\klassensysteem.client\obj\Debug\klassensysteem.client.esproj.CoreCompileInputs.cache
-C:\Klassensysteem\KlassenSysteem\KlassenSysteem\klassensysteem.client\obj\Debug\klassensysteem.client.esproj.CoreCompileInputs.cache
-C:\Users\dylan\source\Workspaces\KlassenSysteem\KlassenSysteem\KlassenSysteem\klassensysteem.client\obj\Debug\klassensysteem.client.esproj.CoreCompileInputs.cache
