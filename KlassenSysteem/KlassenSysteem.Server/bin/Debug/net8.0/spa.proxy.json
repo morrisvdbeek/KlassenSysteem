@@ -3,7 +3,7 @@
 "ServerUrl": "https://localhost:5173",
 "RedirectUrl": "",
 "LaunchCommand": "npm run dev",
-"WorkingDirectory": "C:\\Klassensysteem\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem.Server\\..\\klassensysteem.client",
+"WorkingDirectory": "C:\\Users\\dylan\\source\\Workspaces\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem.Server\\..\\klassensysteem.client",
 "MaxTimeoutInSeconds": "120",
 "KeepRunning": "false"
 }

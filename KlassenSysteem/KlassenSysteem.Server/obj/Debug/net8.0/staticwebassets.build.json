@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "WoMRRXMrXujRUS+ZBAmWTEGv6eLNGxkjlZjy/eJth3s=",
+  "Hash": "MPH2u5P9h5j1Un/7u9fOe+4ZE57evIPor9M8Yukvu3U=",
   "Source": "KlassenSysteem.Server",
   "BasePath": "_content/KlassenSysteem.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Klassensysteem\\KlassenSysteem\\KlassenSysteem\\klassensysteem.client\\klassensysteem.client.esproj",
+      "Identity": "C:\\Users\\dylan\\source\\Workspaces\\KlassenSysteem\\KlassenSysteem\\KlassenSysteem\\klassensysteem.client\\klassensysteem.client.esproj",
       "Version": 2,
       "Source": "klassensysteem.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
