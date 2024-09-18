@@ -18,6 +18,7 @@ import "@/assets/css/main.css";
       </div>
       <div class="actions">
         <button class="btn-login">Login</button>
+        <button class="btn-login">Registreren</button>
       </div>
     </div>
   </nav>
