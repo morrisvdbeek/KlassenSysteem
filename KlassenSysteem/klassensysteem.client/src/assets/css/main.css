@@ -1,0 +1,132 @@
+/* General styles */
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+span {
+  font-size: 16px;
+  color: #556747;
+}
+
+.navbar {
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar.dark {
+  background-color: #1f2937;
+  border-bottom-color: #4b5563;
+}
+
+.container {
+  max-width: 1280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.nav-links-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-image {
+  height: 2rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-right: 40vw;
+  white-space: nowrap;
+  color: #fd8b1d;
+}
+
+.logo-text.dark {
+  color: #fff;
+}
+
+.nav-menu {
+  margin-left: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #111827;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+  color: #fd8b1d;
+}
+
+.nav-link.active {
+  color: #fd8b1d;
+  background-color: #ffecda;
+  border-radius: 0.5rem;
+}
+
+.dark .nav-link {
+  color: #fff;
+}
+
+.dark .nav-link:hover {
+  color: #93c5fd;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-login {
+  background-color: #fd8b1d;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border-color: #fd8b1d;
+  font-weight: 500;
+}
+
+.btn-login:hover {
+  background-color: #fd891dcd;
+  border-color: #fd891dcd;
+  cursor: pointer;
+}
+
+.btn-toggle-menu {
+  display: inline-flex;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
