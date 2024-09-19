@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import navBar from "@/shared/components/nav-balk.vue";
 import "../css/welcome-section.css";
+import "../css/button-section.css";
+import buttonSection from "../components/button-section.vue";
 </script>
 
 <template>
-  <navBar />
+  <nav-bar />
   <div class="welcome-section-container">
     <div
       class="welcome-section relative overflow-hidden bg-gray-900 py-24 sm:py-32"
@@ -43,6 +45,7 @@ import "../css/welcome-section.css";
       </g>
     </svg>
   </div>
+  <button-section />
 </template>
 
 <style scoped>
