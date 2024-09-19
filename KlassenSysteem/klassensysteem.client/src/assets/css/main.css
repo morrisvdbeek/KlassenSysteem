@@ -14,10 +14,8 @@ span {
 
 .navbar {
   background-color: white;
-  position: fixed;
   width: 100%;
   top: 0;
-  z-index: 20;
   border-bottom: 1px solid #e5e7eb;
 }
 
@@ -151,4 +149,25 @@ span {
 .menu-icon {
   width: 1.25rem;
   height: 1.25rem;
+}
+
+/**/
+section {
+    padding: 2em;
+}
+
+article {
+    padding: 2em;
+}
+
+footer {
+    text-align: center;
+    padding: 2em;
+    background-color: #f9f9f9;
+    border-top: 2px solid #fd8b1d;
+}
+
+footer > p {
+    color: black;
+    font-size: 1.5rem;
 }

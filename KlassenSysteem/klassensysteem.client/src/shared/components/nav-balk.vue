@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import "@/assets/css/main.css";
-</script>
-
 <template>
   <nav class="navbar">
     <div class="container">
