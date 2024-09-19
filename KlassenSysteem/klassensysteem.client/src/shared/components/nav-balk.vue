@@ -5,11 +5,15 @@
         <span class="logo-text">Logo hier</span>
         <div class="nav-menu" id="navbar-sticky">
           <ul class="nav-links">
-            <li><a href="#" class="nav-link active">Home</a></li>
             <li>
-              <a><router-link to="/about">About</router-link></a>
+              <a class="nav-link active"
+                ><router-link to="/">Home</router-link></a
+              >
             </li>
-            <li><a href="#" class="nav-link">Services</a></li>
+            <li>
+              <a><router-link to="/about">Over ons</router-link></a>
+            </li>
+            <li><a href="#" class="nav-link">Onze Diensten</a></li>
             <li><a href="#" class="nav-link">Contact</a></li>
           </ul>
         </div>
