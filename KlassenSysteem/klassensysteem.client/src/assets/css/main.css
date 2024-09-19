@@ -1,6 +1,18 @@
-/* General styles */
 * {
   font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box; /* Zorgt ervoor dat padding niet de breedte beïnvloedt */
 }
 
 h1 {
