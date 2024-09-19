@@ -63,9 +63,9 @@ span {
 .logo-text {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-right: 19vw;
+  margin-right: 18vw;
   white-space: nowrap;
-  color: #fd8b1d;
+  color: rgb(126, 158, 253);
 }
 
 .logo-text.dark {
@@ -116,19 +116,18 @@ span {
 .btn-login {
   background-color: white;
   font-weight: bold;
-  color: #fd8b1d;
+  color: rgb(126, 158, 253);
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  border-color: #fd8b1d;
-  border: 1px solid #fd8b1d;
+  border: 1px solid rgb(126, 158, 253);
   font-weight: bold;
   padding-left: 3vw;
   padding-right: 3vw;
 }
 
 .btn-login:hover {
-  background-color: #ffeddccd;
-  border-color: #fd891dcd;
+  background-color: rgb(239, 243, 255);
+  border-color: rgb(126, 158, 253);
   cursor: pointer;
 }
 
