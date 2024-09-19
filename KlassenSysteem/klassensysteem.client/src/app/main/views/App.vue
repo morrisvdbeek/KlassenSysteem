@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import navBar from "@/shared/components/nav-balk.vue";
 import "../css/welcome-section.css";
+import "../css/button-section.css";
+import buttonSection from "../components/button-section.vue";
 </script>
 
 <template>
@@ -43,6 +45,7 @@ import "../css/welcome-section.css";
       </g>
     </svg>
   </div>
+  <button-section />
 </template>
 
 <style scoped>
