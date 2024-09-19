@@ -1,0 +1,169 @@
+.relative {
+  position: relative;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.welcome-section {
+  background-color: #fd8b1d;
+  text-align: center;
+}
+
+.stat-item dd {
+  text-align: center !important;
+}
+
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.sm\:py-32 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.object-right {
+  object-position: right;
+}
+
+.md\:object-center {
+  object-position: center;
+}
+
+.bg-gradient-to-tr {
+  background: linear-gradient(to top right, #ff4694, #776fff);
+}
+
+.opacity-20 {
+  opacity: 0.2;
+}
+
+.blur-3xl {
+  filter: blur(64px);
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: white;
+}
+
+.tracking-tight {
+  letter-spacing: -0.05em;
+}
+
+.sm\:text-6xl {
+  font-size: 3.75rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.leading-8 {
+  line-height: 2rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.grid {
+  display: grid;
+}
+
+.gap-x-8 {
+  grid-column-gap: 2rem;
+}
+
+.gap-y-6 {
+  grid-row-gap: 1.5rem;
+}
+
+.md\:flex {
+  display: flex;
+}
+
+.text-base {
+  font-size: 1rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.mt-16 {
+  margin-top: 4rem;
+}
+
+.sm\:grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.lg\:grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.leading-9 {
+  line-height: 2.25rem;
+}
+
+.tracking-tight {
+  letter-spacing: -0.05em;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.text-gray-300 {
+  color: #eeeeee !important;
+}
