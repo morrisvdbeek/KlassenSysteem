@@ -17,6 +17,8 @@ function __VLS_template() {
     let __VLS_directives;
     let __VLS_styleScopedClasses;
     let __VLS_resolvedLocalAndGlobalComponents;
+    __VLS_elementAsFunction(__VLS_intrinsicElements.br)({});
+    __VLS_elementAsFunction(__VLS_intrinsicElements.br)({});
     var __VLS_slots;
     var __VLS_inheritedAttrs;
     const __VLS_refs = {};
@@ -39,4 +41,4 @@ export default (await import('vue')).defineComponent({
     },
 });
 ;
-//# sourceMappingURL=HomePage.vue.js.map
+//# sourceMappingURL=ContactPage.vue.js.map

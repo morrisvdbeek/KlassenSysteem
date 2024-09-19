@@ -162,6 +162,10 @@ span {
   height: 1.25rem;
 }
 
+.nav-links>li>a>a {
+    color: black;
+}
+
 /**/
 section {
     padding: 2em;
