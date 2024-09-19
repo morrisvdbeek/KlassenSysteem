@@ -1,25 +1,7 @@
 <script setup lang="ts">
-<<<<<<< HEAD
-    import "@/assets/css/main.css";
-    import NavBar from "@/shared/components/nav-balk.vue";
+    import navBar from "@/shared/components/nav-balk.vue";
     import Footer from "@/shared/components/footer.vue";
-</script>
-
-<template>
-    <NavBar />
-
-    <section>
-        <article>
-            <h1>Welkom bij KlassenSysteem</h1>
-            <p>Deze applicatie is gemaakt om klassen te beheren.</p>
-        </article>
-    </section>
-
-    <Footer />
-</template>
-=======
-import navBar from "@/shared/components/nav-balk.vue";
-import "../css/welcome-section.css";
+    import "../css/welcome-section.css";
 </script>
 
 <template>
@@ -62,6 +44,8 @@ import "../css/welcome-section.css";
       </g>
     </svg>
   </div>
+
+    <Footer />
 </template>
 
 <style scoped>
@@ -71,4 +55,3 @@ import "../css/welcome-section.css";
   margin-top: -1px;
 }
 </style>
->>>>>>> b52a7e3032d03f8b000f183f83101a55281a50cc
