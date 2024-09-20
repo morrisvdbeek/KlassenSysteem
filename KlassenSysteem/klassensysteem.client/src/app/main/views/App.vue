@@ -3,6 +3,7 @@ import navBar from "@/shared/components/nav-balk.vue";
 import "../css/welcome-section.css";
 import "../css/button-section.css";
 import buttonSection from "../components/button-section.vue";
+import waveSection from "@/shared/components/wave-section.vue";
 </script>
 
 <template>
@@ -24,27 +25,43 @@ import buttonSection from "../components/button-section.vue";
         <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none"></div>
       </div>
     </div>
-    <svg
-      class="hidden xl:block rotate-180"
-      viewBox="0 0 3840 96"
-      preserveAspectRatio="none"
-    >
-      <g id="Page-1">
-        <g id="Artboard-Copy-3" transform="translate(0.000000, -2328.000000)">
-          <g
-            id="style-element/wave/wave-D"
-            transform="translate(0.000000, 2328.000000)"
-          >
-            <path
-              d="M3840,96 L0,96 L0,56.8695652 C226.666667,18.9565217 546.666667,0 960,0 C1156.94118,0 1356.90934,9.68636678 1558.94298,22.9054085 L1584.20788,24.5757429 L1609.49387,26.2802052 L1634.80054,28.0161244 L1660.12748,29.7808296 L1685.47426,31.5716501 L1710.84047,33.3859149 L1736.22569,35.2209532 L1761.62951,37.074094 L1812.49125,40.824 L1850.96631,43.685184 L1960.36264,51.8498416 L1999.5204,54.7540967 L2025.64431,56.6784755 L2051.78267,58.5900992 L2077.93505,60.4861199 L2104.101,62.36369 L2136.82685,64.6803682 L2136.82685,64.6803682 L2169.57233,66.958206 L2195.78228,68.7487736 L2221.03243,70.4435074 C2439.91236,84.9982223 2659.95618,96 2880,96 C2897.33333,96 2914.48533,95.9744 2931.456,95.9232 L2956.776,95.8272 C3351.32533,94.0224 3645.73333,78.08 3840,48 L3840,96 Z"
-              id="Wave"
-              fill="#fd8b1d"
-            ></path>
-          </g>
-        </g>
-      </g>
-    </svg>
+    <wave-section svgClass="hidden xl:block rotate-180" />
   </div>
+  <section class="about-section-container">
+    <div class="about-section">
+      <div class="text-content">
+        <h2>Onze diensten</h2>
+        <div class="service-section">
+          <div class="section-teachers">
+            <h3>Voor Docenten</h3>
+            <ul>
+              <li>Klassen aanmaken.</li>
+              <li>
+                Studenten uitnodigen via e-mail om aan een klas deel te nemen.
+              </li>
+              <li>Lessen samenstellen met meerkeuzevragen.</li>
+              <li>
+                De prestaties van hun studenten bekijken en directe feedback
+                geven.
+              </li>
+            </ul>
+          </div>
+          <div class="section-students">
+            <h3>Voor Studenten</h3>
+            <ul>
+              <li>Hun voortgang volgen en opdrachten bekijken.</li>
+              <li>Hun scores en resultaten inzien.</li>
+              <li>
+                Notities maken per les om hun aantekeningen altijd bij de hand
+                te hebben.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <wave-section :color="'#eaf7fe'" svgClass="wave-button-section" />
   <button-section />
 </template>
 
@@ -53,5 +70,95 @@ import buttonSection from "../components/button-section.vue";
   transform: rotate(180deg);
   fill: #fd8b1d;
   margin-top: -1px;
+}
+
+.wave-button-section {
+  margin-top: 10vh;
+  margin-bottom: -1vh;
+}
+
+.about-section-container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  padding: 90px 0;
+  background: #fff;
+}
+
+.section-teachers {
+  margin-bottom: 5vh;
+}
+
+.service-section ul {
+  margin-left: 2vw;
+  margin-top: 3vh;
+}
+
+.profile-picture {
+  height: auto;
+  width: 400px;
+  border-radius: 12px;
+}
+
+.section-students {
+  margin-bottom: 7vh;
+}
+
+.about-section {
+  width: 1130px;
+  max-width: 85%;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.text-content {
+  width: 540px;
+}
+
+.text-content h2 {
+  color: #333;
+  font-size: 80px;
+  font-weight: 600;
+  margin-bottom: 7vh;
+}
+
+.service-section h3 {
+  color: #fd8b1d;
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: -5px;
+}
+
+.service-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.service-section ul li {
+  color: #556474;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.text-content h5 {
+  color: #333;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.text-content p {
+  color: #333;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 1px;
+}
+
+.action-button-container {
+  margin-top: 30px;
 }
 </style>
