@@ -61,8 +61,7 @@ import waveSection from "@/shared/components/wave-section.vue";
       </div>
     </div>
   </section>
-  <wave-section :color="'#eaf7fe'" svgClass="wave-button-section" />
-  <button-section />
+  <button-section :waveEnabled="true" />
 </template>
 
 <style scoped>
@@ -70,11 +69,6 @@ import waveSection from "@/shared/components/wave-section.vue";
   transform: rotate(180deg);
   fill: #fd8b1d;
   margin-top: -1px;
-}
-
-.wave-button-section {
-  margin-top: 10vh;
-  margin-bottom: -1vh;
 }
 
 .about-section-container {
