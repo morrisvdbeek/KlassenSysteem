@@ -1,9 +1,3 @@
-<script lang="ts">
-    import { defineComponent, ref } from 'vue';
-    import Footer from "@/shared/components/footer.vue";
-
-</script>
-
 <template>
 
     <div class="registration-containter">
@@ -25,3 +19,17 @@
     </div>
 
 </template>
+
+<script lang="ts">
+    import { defineComponent, ref } from 'vue';
+
+    export default defineComponent({
+        name: 'RegistrationPage',
+        setup() {
+            const message = ref('Test.');
+
+            return {
+                message,
+            };
+        },
+    });</script>
