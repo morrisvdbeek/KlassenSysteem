@@ -151,6 +151,10 @@
             .form label .input:valid + span {
                 color: green;
             }
+             
+            .form label .input:focus {
+                border: 1px solid #fd8b1d;
+            }
 
     .submit {
         border: none;
