@@ -48,6 +48,7 @@
 
 <style>
     .form {
+        margin-left: 40%;
         display: flex;
         flex-direction: column;
         gap: 10px;
