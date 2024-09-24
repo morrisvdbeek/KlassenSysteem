@@ -1,3 +1,17 @@
+<script lang="ts">
+    import { defineComponent, ref } from 'vue';
+
+    export default defineComponent({
+        name: 'RegistrationPage',
+        setup() {
+            const message = ref('Test.');
+
+            return {
+                message,
+            };
+        },
+    });</script>
+
 <template>
 
     <div class="registration-containter">
@@ -20,16 +34,3 @@
 
 </template>
 
-<script lang="ts">
-    import { defineComponent, ref } from 'vue';
-
-    export default defineComponent({
-        name: 'RegistrationPage',
-        setup() {
-            const message = ref('Test.');
-
-            return {
-                message,
-            };
-        },
-    });</script>

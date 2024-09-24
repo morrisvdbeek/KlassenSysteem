@@ -19,8 +19,10 @@
         </div>
       </div>
       <div class="actions">
-        <button class="btn-login">Login</button>
-        <button class="btn-registration"><router-link to="/registration">Registreren</router-link></button>
+          <button class="btn-login">Login</button>
+          <router-link to="/registration">
+              <button class="btn-registration">Registreren</button>
+          </router-link>
       </div>
     </div>
   </nav>

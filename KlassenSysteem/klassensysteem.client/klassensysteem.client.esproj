@@ -12,6 +12,7 @@
     <Folder Include="src\app\main\components\" />
     <Folder Include="src\app\main\css\" />
     <Folder Include="src\assets\img\" />
+    <Folder Include="src\layouts\" />
     <Folder Include="src\shared\icons\" />
   </ItemGroup>
 </Project>
