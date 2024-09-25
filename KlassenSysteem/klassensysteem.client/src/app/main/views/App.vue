@@ -4,6 +4,7 @@ import "../css/welcome-section.css";
 import "../css/button-section.css";
 import buttonSection from "../components/button-section.vue";
 import waveSection from "@/shared/components/wave-section.vue";
+import FooterSection from "@/shared/components/footer-section.vue";
 </script>
 
 <template>
@@ -62,6 +63,7 @@ import waveSection from "@/shared/components/wave-section.vue";
     </div>
   </section>
   <button-section :waveEnabled="true" />
+    <FooterSection />
 </template>
 
 <style scoped>
