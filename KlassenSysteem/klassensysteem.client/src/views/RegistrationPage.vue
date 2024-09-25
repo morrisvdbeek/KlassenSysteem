@@ -16,6 +16,7 @@
 
     <!-- TODO: Afhandeling van data toevoegen -->
     <form class="form">
+        <router-view />
         <p class="title">Registreren </p>
         <p class="message">Registreer nu om volledige toegang tot het programma te kijrgen. </p>
         <div class="flex">
