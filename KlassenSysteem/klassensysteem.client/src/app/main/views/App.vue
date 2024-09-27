@@ -1,160 +1,165 @@
 <script setup lang="ts">
-import navBar from "@/shared/components/nav-balk.vue";
-import "../css/welcome-section.css";
-import "../css/button-section.css";
-import buttonSection from "../components/button-section.vue";
-import waveSection from "@/shared/components/wave-section.vue";
-import FooterSection from "@/shared/components/footer-section.vue";
+    import navBar from "@/shared/components/nav-balk.vue";
+    import "../css/welcome-section.css";
+    import "../css/button-section.css";
+    import buttonSection from "../components/button-section.vue";
+    import waveSection from "@/shared/components/wave-section.vue";
+    import FooterSection from "@/shared/components/footer-section.vue";
 </script>
 
 <template>
-  <navBar />
-  <div class="welcome-section-container">
-    <div
-      class="welcome-section relative overflow-hidden bg-gray-900 py-24 sm:py-32"
-    >
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:mx-0">
-          <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Klassensysteem
-          </h2>
-          <p class="mt-6 text-lg leading-8 text-gray-300">Naam leerling</p>
-          <!-- TODO: Naam bepalen na inloggen-->
-          <p class="text-lg text-gray-300">Klas: SAI-4IT22A</p>
-          <!-- TODO: Klas bepalen na inloggen-->
+    <navBar />
+    <router-view /> <!-- Dit is nodig om dynamische content te laden, zoals de loginpagina -->
+
+    <div class="welcome-section-container">
+        <div class="welcome-section relative overflow-hidden bg-gray-900 py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                        Klassensysteem
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-300">Naam leerling</p>
+                    <!-- TODO: Naam bepalen na inloggen-->
+                    <p class="text-lg text-gray-300">Klas: SAI-4IT22A</p>
+                    <!-- TODO: Klas bepalen na inloggen-->
+                </div>
+            </div>
         </div>
-        <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none"></div>
-      </div>
+        <wave-section svgClass="hidden xl:block rotate-180" />
     </div>
-    <wave-section svgClass="hidden xl:block rotate-180" />
-  </div>
-  <section class="about-section-container">
-    <div class="about-section">
-      <div class="text-content">
-        <h2>Onze diensten</h2>
-        <div class="service-section">
-          <div class="section-teachers">
-            <h3>Voor Docenten</h3>
-            <ul>
-              <li>Klassen aanmaken.</li>
-              <li>
-                Studenten uitnodigen via e-mail om aan een klas deel te nemen.
-              </li>
-              <li>Lessen samenstellen met meerkeuzevragen.</li>
-              <li>
-                De prestaties van hun studenten bekijken en directe feedback
-                geven.
-              </li>
-            </ul>
-          </div>
-          <div class="section-students">
-            <h3>Voor Studenten</h3>
-            <ul>
-              <li>Hun voortgang volgen en opdrachten bekijken.</li>
-              <li>Hun scores en resultaten inzien.</li>
-              <li>
-                Notities maken per les om hun aantekeningen altijd bij de hand
-                te hebben.
-              </li>
-            </ul>
-          </div>
+
+    <section class="about-section-container">
+        <div class="about-section">
+            <div class="text-content">
+                <h2>Onze diensten</h2>
+                <div class="service-section">
+                    <div class="section-teachers">
+                        <h3>Voor Docenten</h3>
+                        <ul>
+                            <li>Klassen aanmaken.</li>
+                            <li>Studenten uitnodigen via e-mail om aan een klas deel te nemen.</li>
+                            <li>Lessen samenstellen met meerkeuzevragen.</li>
+                            <li>De prestaties van hun studenten bekijken en directe feedback geven.</li>
+                        </ul>
+                    </div>
+                    <div class="section-students">
+                        <h3>Voor Studenten</h3>
+                        <ul>
+                            <li>Hun voortgang volgen en opdrachten bekijken.</li>
+                            <li>Hun scores en resultaten inzien.</li>
+                            <li>Notities maken per les om hun aantekeningen altijd bij de hand te hebben.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <button-section :waveEnabled="true" />
+    </section>
+
+    <button-section :waveEnabled="true" />
     <FooterSection />
 </template>
 
 <style scoped>
-.rotate-180 {
-  transform: rotate(180deg);
-  fill: #fd8b1d;
-  margin-top: -1px;
-}
+    /* Stijlen blijven hetzelfde zoals in je originele code */
+    .rotate-180 {
+        transform: rotate(180deg);
+        fill: #fd8b1d;
+        margin-top: -1px;
+    }
 
-.about-section-container {
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  padding: 90px 0;
-  background: #fff;
-}
+    /* Rest van de stijlen hier */
+</style>
 
-.section-teachers {
-  margin-bottom: 5vh;
-}
 
-.service-section ul {
-  margin-left: 2vw;
-  margin-top: 3vh;
-}
+<style scoped>
+    .rotate-180 {
+        transform: rotate(180deg);
+        fill: #fd8b1d;
+        margin-top: -1px;
+    }
 
-.profile-picture {
-  height: auto;
-  width: 400px;
-  border-radius: 12px;
-}
+    .about-section-container {
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        padding: 90px 0;
+        background: #fff;
+    }
 
-.section-students {
-  margin-bottom: 7vh;
-}
+    .section-teachers {
+        margin-bottom: 5vh;
+    }
 
-.about-section {
-  width: 1130px;
-  max-width: 85%;
-  margin: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
+    .service-section ul {
+        margin-left: 2vw;
+        margin-top: 3vh;
+    }
 
-.text-content {
-  width: 540px;
-}
+    .profile-picture {
+        height: auto;
+        width: 400px;
+        border-radius: 12px;
+    }
 
-.text-content h2 {
-  color: #333;
-  font-size: 80px;
-  font-weight: 600;
-  margin-bottom: 7vh;
-}
+    .section-students {
+        margin-bottom: 7vh;
+    }
 
-.service-section h3 {
-  color: #fd8b1d;
-  font-size: 28px;
-  font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: -5px;
-}
+    .about-section {
+        width: 1130px;
+        max-width: 85%;
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
 
-.service-section ul {
-  list-style-type: disc;
-  padding-left: 20px;
-}
+    .text-content {
+        width: 540px;
+    }
 
-.service-section ul li {
-  color: #556474;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+        .text-content h2 {
+            color: #333;
+            font-size: 80px;
+            font-weight: 600;
+            margin-bottom: 7vh;
+        }
 
-.text-content h5 {
-  color: #333;
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
+    .service-section h3 {
+        color: #fd8b1d;
+        font-size: 28px;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: -5px;
+    }
 
-.text-content p {
-  color: #333;
-  font-size: 18px;
-  line-height: 25px;
-  letter-spacing: 1px;
-}
+    .service-section ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
 
-.action-button-container {
-  margin-top: 30px;
-}
+        .service-section ul li {
+            color: #556474;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+    .text-content h5 {
+        color: #333;
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .text-content p {
+        color: #333;
+        font-size: 18px;
+        line-height: 25px;
+        letter-spacing: 1px;
+    }
+
+    .action-button-container {
+        margin-top: 30px;
+    }
 </style>
