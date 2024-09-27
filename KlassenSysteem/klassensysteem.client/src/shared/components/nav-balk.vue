@@ -6,7 +6,7 @@
         <div class="nav-menu" id="navbar-sticky">
             <ul class="nav-links">
                 <li>
-                    <a class="nav-link active"><router-link to="/">Home</router-link></a>
+                    <a class="nav-link active"><router-link to="/">Home</router-link></a> 
                 </li>
             </ul>
         </div>
@@ -17,6 +17,4 @@
       </div>
     </div>
   </nav>
-
-  <router-view />
 </template>

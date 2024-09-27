@@ -17,8 +17,7 @@ function __VLS_template() {
     let __VLS_directives;
     let __VLS_styleScopedClasses;
     let __VLS_resolvedLocalAndGlobalComponents;
-    __VLS_elementAsFunction(__VLS_intrinsicElements.br)({});
-    __VLS_elementAsFunction(__VLS_intrinsicElements.br)({});
+    __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
     var __VLS_slots;
     var __VLS_inheritedAttrs;
     const __VLS_refs = {};
