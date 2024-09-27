@@ -17,6 +17,6 @@
 <style scoped>
     
     main {
-        padding: 20px;
-    }
+        padding: 25px;
+    }  
 </style>
