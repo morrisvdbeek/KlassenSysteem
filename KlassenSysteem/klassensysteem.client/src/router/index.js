@@ -6,11 +6,14 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home
+<<<<<<< Updated upstream
     },
     {
         path: '/login',
         name: 'Login',
         component: Login
+=======
+>>>>>>> Stashed changes
     }
 ];
 const router = createRouter({

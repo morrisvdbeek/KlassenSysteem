@@ -43,6 +43,7 @@ function __VLS_template() {
     const __VLS_5 = __VLS_pickFunctionalComponentCtx(__VLS_0, __VLS_2);
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("actions") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("btn-login") }, });
+<<<<<<< Updated upstream
     const __VLS_6 = __VLS_resolvedLocalAndGlobalComponents.RouterLink;
     /** @type { [typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, ] } */
     // @ts-ignore
@@ -50,6 +51,8 @@ function __VLS_template() {
     const __VLS_8 = __VLS_7({ to: ("/login"), }, ...__VLS_functionalComponentArgsRest(__VLS_7));
     __VLS_nonNullable(__VLS_11.slots).default;
     const __VLS_11 = __VLS_pickFunctionalComponentCtx(__VLS_6, __VLS_8);
+=======
+>>>>>>> Stashed changes
     __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("btn-registration") }, });
     __VLS_styleScopedClasses['navbar'];
     __VLS_styleScopedClasses['container'];
