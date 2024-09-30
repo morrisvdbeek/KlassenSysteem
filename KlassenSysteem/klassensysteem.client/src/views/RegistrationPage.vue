@@ -12,7 +12,7 @@
         },
     });</script>
 
-<template>
+<template>  
 
     <!-- TODO: Afhandeling van data toevoegen -->
     <form class="form">
@@ -24,7 +24,7 @@
                 <input required="" placeholder="" type="text" class="input">
                 <span>Voornaam</span>
             </label>
-
+            
             <label>
                 <input required="" placeholder="" type="text" class="input">
                 <span>Achternaam</span>
