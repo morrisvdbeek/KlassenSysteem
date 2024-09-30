@@ -1,4 +1,11 @@
+import { useRouter } from 'vue-router'; // Vue router importeren
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
+// De router instantie gebruiken om routes aan te sturen
+const router = useRouter();
+// Functie om naar de login pagina te navigeren
+const goToLogin = () => {
+    router.push('/login'); // Zorg dat '/login' verwijst naar de juiste login route
+};
 const __VLS_fnComponent = (await import('vue')).defineComponent({});
 ;
 let __VLS_functionalComponentProps;
@@ -16,6 +23,8 @@ function __VLS_template() {
     };
     let __VLS_directives;
     let __VLS_styleScopedClasses;
+    // CSS variable injection 
+    // CSS variable injection end 
     let __VLS_resolvedLocalAndGlobalComponents;
     __VLS_elementAsFunction(__VLS_intrinsicElements.nav, __VLS_intrinsicElements.nav)({ ...{ class: ("navbar") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("container") }, });
@@ -34,12 +43,14 @@ function __VLS_template() {
     const __VLS_5 = __VLS_pickFunctionalComponentCtx(__VLS_0, __VLS_2);
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("actions") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("btn-login") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("btn-registration") }, });
-    const __VLS_6 = __VLS_resolvedLocalAndGlobalComponents.RouterView;
-    /** @type { [typeof __VLS_components.RouterView, typeof __VLS_components.routerView, ] } */
+    const __VLS_6 = __VLS_resolvedLocalAndGlobalComponents.RouterLink;
+    /** @type { [typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, ] } */
     // @ts-ignore
-    const __VLS_7 = __VLS_asFunctionalComponent(__VLS_6, new __VLS_6({}));
-    const __VLS_8 = __VLS_7({}, ...__VLS_functionalComponentArgsRest(__VLS_7));
+    const __VLS_7 = __VLS_asFunctionalComponent(__VLS_6, new __VLS_6({ to: ("/login"), }));
+    const __VLS_8 = __VLS_7({ to: ("/login"), }, ...__VLS_functionalComponentArgsRest(__VLS_7));
+    __VLS_nonNullable(__VLS_11.slots).default;
+    const __VLS_11 = __VLS_pickFunctionalComponentCtx(__VLS_6, __VLS_8);
+    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("btn-registration") }, });
     __VLS_styleScopedClasses['navbar'];
     __VLS_styleScopedClasses['container'];
     __VLS_styleScopedClasses['nav-links-container'];

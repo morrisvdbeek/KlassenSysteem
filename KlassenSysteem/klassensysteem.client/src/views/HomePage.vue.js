@@ -1,5 +1,7 @@
 import waveSection from "@/shared/components/wave-section.vue";
+import buttonSection from "@/shared/components/button-section.vue";
 import "../app/main/css/welcome-section.css";
+import "../app/main/css/button-section.css";
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
 const __VLS_fnComponent = (await import('vue')).defineComponent({});
 ;
@@ -59,11 +61,11 @@ function __VLS_template() {
     __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({});
-    const __VLS_5 = __VLS_resolvedLocalAndGlobalComponents.ButtonSection;
-    /** @type { [typeof __VLS_components.ButtonSection, typeof __VLS_components.buttonSection, ] } */
     // @ts-ignore
-    const __VLS_6 = __VLS_asFunctionalComponent(__VLS_5, new __VLS_5({ waveEnabled: ((true)), }));
-    const __VLS_7 = __VLS_6({ waveEnabled: ((true)), }, ...__VLS_functionalComponentArgsRest(__VLS_6));
+    [ButtonSection,];
+    // @ts-ignore
+    const __VLS_5 = __VLS_asFunctionalComponent(buttonSection, new buttonSection({}));
+    const __VLS_6 = __VLS_5({}, ...__VLS_functionalComponentArgsRest(__VLS_5));
     __VLS_styleScopedClasses['home-page'];
     __VLS_styleScopedClasses['welcome-section-container'];
     __VLS_styleScopedClasses['welcome-section'];
@@ -116,6 +118,7 @@ const __VLS_self = (await import('vue')).defineComponent({
     setup() {
         return {
             waveSection: waveSection,
+            buttonSection: buttonSection,
         };
     },
 });

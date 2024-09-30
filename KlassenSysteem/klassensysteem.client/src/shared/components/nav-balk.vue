@@ -6,15 +6,15 @@
         <div class="nav-menu" id="navbar-sticky">
             <ul class="nav-links">
                 <li>
-                    <a class="nav-link active"><router-link to="/">Home</router-link></a> 
+                    <router-link to="/"><a class="nav-link active">Home</a></router-link>
                 </li>
             </ul>
         </div>
       </div>
       <div class="actions">
-        <button class="btn-login">Login</button>
-        <button class="btn-registration">Registreren</button>
-      </div>
+          <router-link to="/login"><button class="btn-login">Login</button></router-link>
+          <router-link to="/register"><button class="btn-registration">Registreren</button></router-link>
+</div>
     </div>
   </nav>
 </template>

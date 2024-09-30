@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import navBar from "@/shared/components/nav-balk.vue";
-    import Footer from "@/shared/components/footer.vue";
+    import Footer from "@/shared/components/footer-section.vue";
     import { ref } from 'vue'; // Voor binding van inputvelden
 
     // Refs voor het opslaan van e-mail en wachtwoord
@@ -16,7 +16,6 @@
 
 <template>
     <div>
-        <navBar />
         <main>
             <h1>Log hieronder in!</h1>
             <form @submit.prevent="handleLogin">
@@ -39,14 +38,13 @@
                 <button type="submit" class="btn-login">Inloggen</button>
             </form>
         </main>
-        <Footer />
     </div>
 </template>
 
 <style scoped>
     main {
         padding: 25px;
-        max-width: 400px;
+        max-width: 55vw;
         margin: 0 auto;
     }
 

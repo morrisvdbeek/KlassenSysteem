@@ -19,11 +19,6 @@ function __VLS_template() {
     let __VLS_resolvedLocalAndGlobalComponents;
     __VLS_elementAsFunction(__VLS_intrinsicElements.footer, __VLS_intrinsicElements.footer)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
-    const __VLS_0 = __VLS_resolvedLocalAndGlobalComponents.RouterView;
-    /** @type { [typeof __VLS_components.RouterView, typeof __VLS_components.routerView, ] } */
-    // @ts-ignore
-    const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0({}));
-    const __VLS_2 = __VLS_1({}, ...__VLS_functionalComponentArgsRest(__VLS_1));
     var __VLS_slots;
     var __VLS_inheritedAttrs;
     const __VLS_refs = {};
