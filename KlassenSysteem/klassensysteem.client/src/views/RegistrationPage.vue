@@ -1,73 +1,136 @@
 <script setup lang="ts">
-    import Footer from "@/shared/components/footer-section.vue";
-    import { ref } from 'vue'; // Voor binding van inputvelden
+    import { ref } from 'vue';
 
+    // Refs voor het opslaan van form gegevens
+    const firstName = ref('');
+    const lastName = ref('');
+    const email = ref('');
+    const password = ref('');
+
+    // Functie die bij het indienen van het formulier wordt aangeroepen
+    const handleRegister = () => {
+        console.log('Registreren met:', firstName.value, lastName.value, email.value, password.value);
+        // Voeg hier de registratie logica toe, zoals een API-aanroep voor registratie
+    };
 </script>
 
 <template>
-
-    <!-- TODO: Afhandeling van data toevoegen -->
-    <form class="form">
-        <router-view />
-        <p class="title">Registreren </p>
-        <p class="message">Registreer nu om volledige toegang tot het programma te kijrgen. </p>
-        <div class="flex">
-            <label>
-                <input 
-                       placeholder="" 
-                       type="text" 
-                       class="input"
-                       required>
-                <span>Voornaam</span>
-            </label>
-
-            <label>
-                <input 
-                       placeholder="" 
-                       type="text" 
-                       class="input"
-                       required>
-                <span>Achternaam</span>
-            </label>
-        </div>
-
-        <label>
-            <input 
-                   placeholder="" 
-                   type="email" 
-                   class="input"
-                   required>
-            <span>Email</span>
-        </label>
-
-        <label>
-            <input 
-                   placeholder="" 
-                   type="password" 
-                   class="input"
-                   required>
-            <span>Wachtwoord</span>
-        </label>
-        <button class="submit">Account aanmaken</button>
-
-        <!-- TODO: Navigatie naar login maken -->
-        <p class="signin">Al een account?<router-link to="/login"> Login</router-link></p>
-    </form>
-
+    <div>
+        <main>
+            <p class="title">Registreren</p>
+            <p class="message">Registreer nu om volledige toegang tot het programma te krijgen.</p>
+            <form @submit.prevent="handleRegister">
+                <div class="input-group">
+                    <input type="text"
+                           id="firstName"
+                           v-model="firstName"
+                           class="input"
+                           required />
+                    <label for="firstName" class="user-label">Voornaam</label>
+                </div>
+                <div class="input-group">
+                    <input type="text"
+                           id="lastName"
+                           v-model="lastName"
+                           class="input"
+                           required />
+                    <label for="lastName" class="user-label">Achternaam</label>
+                </div>
+                <div class="input-group">
+                    <input type="email"
+                           id="email"
+                           v-model="email"
+                           class="input"
+                           required />
+                    <label for="email" class="user-label">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password"
+                           id="password"
+                           v-model="password"
+                           class="input"
+                           required />
+                    <label for="password" class="user-label">Wachtwoord</label>
+                </div>
+                <button type="submit" class="btn-register">Account aanmaken</button>
+            </form>
+            <p class="signin">Al een account? <router-link to="/login">Login</router-link></p>
+        </main>
+    </div>
 </template>
-<style>
-    .form {
-        margin-left: 40%;
+
+<style scoped>
+    main {
+        padding: 25px;
+        max-width: 55vw;
+        margin: 0 auto;
+    }
+
+    form {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        max-width: 350px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 20px;
-        position: relative;
-        border: 1px solid black;
     }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .input {
+        border: solid 1.5px #9e9e9e;
+        border-radius: 1rem;
+        background: none;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #212121;
+        width: 100%;
+        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .user-label {
+        position: absolute;
+        left: 15px;
+        color: #9e9e9e;
+        pointer-events: none;
+        transform: translateY(1.5rem);
+        transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .input:focus,
+    .input:valid {
+        outline: none;
+        border: 1.5px solid #1a73e8;
+    }
+
+        .input:focus ~ .user-label,
+        {
+            transform: translateY(-50%) scale(0.8);
+            background-color: #ffffff;
+            padding: 0 .2em;
+            color: #fd891dcd;
+        }
+
+        .input:valid ~ .user-label {
+            color: green;
+        }
+
+        .input:valid {
+            border: 1.5px solid green;
+        }
+        
+    .btn-register {
+        background-color: #fd8b1d;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn-register:hover {
+            background-color: #fd891dcd;
+        }
 
     .title {
         font-size: 28px;
@@ -102,85 +165,6 @@
             animation: pulse 1s linear infinite;
         }
 
-    .message, .signin {
-        color: rgba(88, 87, 87, 0.822);
-        font-size: 14px;
-    }
-
-    .signin {
-        text-align: center;
-    }
-
-        .signin a {
-            color: royalblue;
-        }
-
-            .signin a:hover {
-                text-decoration: underline royalblue;
-            }
-
-    .flex {
-        display: flex;
-        width: 100%;
-        gap: 6px;
-    }
-
-    .form label {
-        position: relative;
-    }
-
-        .form label .input {
-            width: 100%;
-            padding: 10px 10px 20px 10px;
-            outline: 0;
-            border: 1px solid rgba(105, 105, 105, 0.397);
-            border-radius: 10px;
-        }
-
-            .form label .input + span {
-                position: absolute;
-                left: 10px;
-                top: 15px;
-                color: grey;
-                font-size: 0.9em;
-                cursor: text;
-                transition: 0.3s ease;
-            }
-
-            .form label .input:placeholder-shown + span {
-                top: 15px;
-                font-size: 0.9em;
-            }
-
-            .form label .input:focus + span, .form label .input:valid + span {
-                top: 30px;
-                font-size: 0.7em;
-                font-weight: 600;
-            }
-
-            .form label .input:valid + span {
-                color: green;
-            }
-
-            .form label .input:focus {
-                border: 1px solid #fd8b1d;
-            }
-
-    .submit {
-        border: none;
-        outline: none;
-        background-color: #fd8b1d;
-        padding: 10px;
-        border-radius: 10px;
-        color: #fff;
-        font-size: 16px;
-        transition: 0.3s ease;
-    }
-
-        .submit:hover {
-            background-color: #fd891dcd;
-        }
-
     @keyframes pulse {
         from {
             transform: scale(0.9);
@@ -192,4 +176,24 @@
             opacity: 0;
         }
     }
+
+    .message {
+        color: rgba(88, 87, 87, 0.822);
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .signin {
+        text-align: center;
+        color: rgba(88, 87, 87, 0.822);
+        font-size: 14px;
+    }
+
+        .signin a {
+            color: royalblue;
+        }
+
+            .signin a:hover {
+                text-decoration: underline royalblue;
+            }
 </style>
