@@ -102,31 +102,34 @@
         border: 1.5px solid #1a73e8;
     }
 
-        .input:focus ~ .user-label,
+        .input:focus ~ .user-label
         {
             transform: translateY(-50%) scale(0.8);
             background-color: #ffffff;
             padding: 0 .2em;
-            color: #fd891dcd;
+            color: #2196f3;
         }
 
         .input:valid ~ .user-label {
+            transform: translateY(-50%) scale(0.8);
+            background-color: #ffffff;
+            padding: 0 .2em;
             color: green;
         }
 
         .input:valid {
-            border: 1.5px solid green;
+            border: solid 1.5px green;
         }
-        
-    .btn-register {
-        background-color: #fd8b1d;
-        color: white;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+
+        .btn-register {
+            background-color: #fd8b1d;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
         .btn-register:hover {
             background-color: #fd891dcd;
