@@ -46,4 +46,4 @@ export default (await import('vue')).defineComponent({
     },
 });
 ;
-//# sourceMappingURL=footer.vue.js.map
+//# sourceMappingURL=footer-section.vue.js.map

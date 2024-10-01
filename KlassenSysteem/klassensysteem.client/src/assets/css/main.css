@@ -25,9 +25,6 @@ span {
 }
 
 .navbar {
-  background-color: white;
-  width: 100%;
-  top: 0;
   border-bottom: 1px solid #e5e7eb;
 }
 
@@ -37,12 +34,9 @@ span {
 }
 
 .container {
-  max-width: 1280px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
   padding: 1rem;
-  margin: 0 auto;
 }
 
 .nav-links-container {
@@ -50,42 +44,17 @@ span {
   align-items: center;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.logo-image {
-  height: 2rem;
-}
-
 .logo-text {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-right: 18vw;
-  white-space: nowrap;
   color: rgb(126, 158, 253);
 }
 
-.logo-text.dark {
-  color: #fff;
-}
-
-.nav-menu {
-  margin-left: 1rem;
-}
-
 .nav-links {
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
 .nav-link {
-  text-decoration: none;
   color: #111827;
   padding: 0.5rem 1rem;
 }
