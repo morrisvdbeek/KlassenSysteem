@@ -16,6 +16,11 @@ function __VLS_template() {
     };
     let __VLS_directives;
     let __VLS_styleScopedClasses;
+<<<<<<< HEAD
+=======
+    // CSS variable injection 
+    // CSS variable injection end 
+>>>>>>> 077fd3fc16de11d93794408e3699dcf69df846e6
     let __VLS_resolvedLocalAndGlobalComponents;
     __VLS_elementAsFunction(__VLS_intrinsicElements.form, __VLS_intrinsicElements.form)({ ...{ class: ("form") }, });
     const __VLS_0 = __VLS_resolvedLocalAndGlobalComponents.RouterView;
