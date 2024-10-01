@@ -48,6 +48,8 @@ function __VLS_template() {
     __VLS_styleScopedClasses['nav-links'];
     __VLS_styleScopedClasses['nav-link'];
     __VLS_styleScopedClasses['active'];
+    __VLS_styleScopedClasses['nav-link'];
+    __VLS_styleScopedClasses['nav-link'];
     __VLS_styleScopedClasses['actions'];
     __VLS_styleScopedClasses['btn-login'];
     __VLS_styleScopedClasses['btn-registration'];
