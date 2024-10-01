@@ -1,6 +1,4 @@
 <script setup lang="ts">
-    import navBar from "@/shared/components/nav-balk.vue";
-    import Footer from "@/shared/components/footer-section.vue";
     import { ref } from 'vue'; // Voor binding van inputvelden
 
     // Refs voor het opslaan van e-mail en wachtwoord
@@ -16,71 +14,164 @@
 
 <template>
     <div>
-        <main>
-            <h1>Log hieronder in!</h1>
-            <form @submit.prevent="handleLogin">
-                <div>
-                    <label for="email">E-mail</label>
-                    <input type="email"
-                           id="email"
-                           v-model="email"
-                           placeholder="Vul je e-mailadres in"
-                           required />
-                </div>
-                <div>
-                    <label for="password">Wachtwoord</label>
-                    <input type="password"
-                           id="password"
-                           v-model="password"
-                           placeholder="Vul je wachtwoord in"
-                           required />
-                </div>
-                <button type="submit" class="btn-login">Inloggen</button>
-            </form>
-        </main>
+        <form class="form" @submit.prevent="handleLogin">
+            <p class="title">Inloggen</p>
+            <p class="message">Log in met je e-mail en wachtwoord om toegang te krijgen.</p>
+
+            <label>
+                <input type="email"
+                       v-model="email"
+                       placeholder=""
+                       class="input"
+                       required>
+                <span>E-mail</span>
+            </label>
+
+            <label>
+                <input type="password"
+                       v-model="password"
+                       placeholder=""
+                       class="input"
+                       required>
+                <span>Wachtwoord</span>
+            </label>
+
+            <button type="submit" class="submit">Inloggen</button>
+
+            <p class="signin">Nog geen account?<router-link to="/register"> Registreer</router-link></p>
+        </form>
     </div>
 </template>
 
 <style scoped>
-    main {
-        padding: 25px;
-        max-width: 55vw;
-        margin: 0 auto;
-    }
-
-    form {
+    .form {
+        margin-left: 40%;
         display: flex;
         flex-direction: column;
+        gap: 10px;
+        max-width: 350px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 20px;
+        position: relative;
+        border: 1px solid black;
     }
 
-    div {
-        margin-bottom: 20px;
+    .title {
+        font-size: 28px;
+        color: #fd8b1d;
+        font-weight: 600;
+        letter-spacing: -1px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
     }
 
-    label {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    input {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    .btn-login {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-        .btn-login:hover {
-            background-color: #45a049;
+        .title::before, .title::after {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            left: 0px;
+            background-color: #fd8b1d;
         }
+
+        .title::before {
+            width: 18px;
+            height: 18px;
+            background-color: #fd8b1d;
+        }
+
+        .title::after {
+            width: 18px;
+            height: 18px;
+            animation: pulse 1s linear infinite;
+        }
+
+    .message, .signin {
+        color: rgba(88, 87, 87, 0.822);
+        font-size: 14px;
+    }
+
+    .signin {
+        text-align: center;
+    }
+
+        .signin a {
+            color: royalblue;
+        }
+
+            .signin a:hover {
+                text-decoration: underline royalblue;
+            }
+
+    .form label {
+        position: relative;
+    }
+
+        .form label .input {
+            width: 100%;
+            padding: 10px 10px 20px 10px;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+        }
+
+            .form label .input + span {
+                position: absolute;
+                left: 10px;
+                top: 15px;
+                color: grey;
+                font-size: 0.9em;
+                cursor: text;
+                transition: 0.3s ease;
+            }
+
+            .form label .input:placeholder-shown + span {
+                top: 15px;
+                font-size: 0.9em;
+            }
+
+            .form label .input:focus + span, .form label .input:valid + span {
+                top: 30px;
+                font-size: 0.7em;
+                font-weight: 600;
+            }
+
+            .form label .input:valid + span {
+                color: green;
+            }
+
+            .form label .input:focus {
+                border: 1px solid #fd8b1d;
+            }
+
+    .submit {
+        border: none;
+        outline: none;
+        background-color: #fd8b1d;
+        padding: 10px;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 16px;
+        transition: 0.3s ease;
+    }
+
+        .submit:hover {
+            background-color: #fd891dcd;
+        }
+
+    @keyframes pulse {
+        from {
+            transform: scale(0.9);
+            opacity: 1;
+        }
+
+        to {
+            transform: scale(1.8);
+            opacity: 0;
+        }
+    }
 </style>
