@@ -14,23 +14,23 @@
         <p class="message">Registreer nu om volledige toegang tot het programma te kijrgen. </p>
         <div class="flex">
             <label>
-                <input required="" placeholder="" type="text" class="input">
+                <input required placeholder="" type="text" class="input">
                 <span>Voornaam</span>
             </label>
 
             <label>
-                <input required="" placeholder="" type="text" class="input">
+                <input required placeholder="" type="text" class="input">
                 <span>Achternaam</span>
             </label>
         </div>
 
         <label>
-            <input required="" placeholder="" type="email" class="input">
+            <input required placeholder="" type="email" class="input">
             <span>Email</span>
         </label>
 
         <label>
-            <input required="" placeholder="" type="password" class="input">
+            <input required placeholder="" type="password" class="input">
             <span>Wachtwoord</span>
         </label>
         <button class="submit">Account aanmaken</button>
