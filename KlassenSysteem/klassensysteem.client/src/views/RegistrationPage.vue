@@ -1,5 +1,4 @@
 <script setup lang="ts">
-    import navBar from "@/shared/components/nav-balk.vue";
     import Footer from "@/shared/components/footer-section.vue";
     import { ref } from 'vue';
 
@@ -36,7 +35,7 @@
         <button class="submit">Account aanmaken</button>
 
         <!-- TODO: Navigatie naar login maken -->
-        <p class="signin">Al een account? <a href="#">Login</a> </p>
+        <p class="signin">Al een account?<router-link to="/login"> Login</router-link></p>
     </form>
 
 </template>
