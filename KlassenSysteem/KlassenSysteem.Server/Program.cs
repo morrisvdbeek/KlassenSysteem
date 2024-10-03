@@ -1,3 +1,4 @@
+using KlassenSysteem.Server.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace KlassenSysteem.Server
@@ -61,6 +62,7 @@ namespace KlassenSysteem.Server
         }
 
         public DbSet<MyModel> MyModels { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 
     public class MyModel
