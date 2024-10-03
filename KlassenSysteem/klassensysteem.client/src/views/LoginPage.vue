@@ -14,48 +14,110 @@
 
 <template>
     <div>
-        <form class="form" @submit.prevent="handleLogin">
+        <main>
             <p class="title">Inloggen</p>
             <p class="message">Log in met je e-mail en wachtwoord om toegang te krijgen.</p>
 
-            <label>
-                <input type="email"
-                       v-model="email"
-                       placeholder=""
-                       class="input"
-                       required>
-                <span>E-mail</span>
-            </label>
+            <form class="form" @submit.prevent="handleLogin">
+                <div class="input-group">
+                    <input type="email"
+                           v-model="email"
+                           class="input"
+                           required />
+                    <label for="email" class="user-label">E-mail</label>
+                </div>
 
-            <label>
-                <input type="password"
-                       v-model="password"
-                       placeholder=""
-                       class="input"
-                       required>
-                <span>Wachtwoord</span>
-            </label>
+                <div class="input-group">
+                    <input type="password"
+                           v-model="password"
+                           class="input"
+                           required />
+                    <label for="password" class="user-label">Wachtwoord</label>
+                </div>
 
-            <button type="submit" class="submit">Inloggen</button>
+                <button type="submit" class="btn-login">Inloggen</button>
+            </form>
 
-            <p class="signin">Nog geen account?<router-link to="/register"> Registreer</router-link></p>
-        </form>
+            <p class="signin">Nog geen account? <router-link to="/register">Registreer</router-link></p>
+        </main>
     </div>
 </template>
 
 <style scoped>
+    main {
+        padding: 25px;
+        max-width: 55vw;
+        margin: 0 auto;
+    }
+
     .form {
-        margin-left: 40%;
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        max-width: 350px;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 20px;
-        position: relative;
-        border: 1px solid black;
+        gap: 20px;
     }
+
+    .input-group {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .input {
+        border: solid 1.5px #9e9e9e;
+        border-radius: 1rem;
+        background: none;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #212121;
+        width: 100%;
+        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .user-label {
+        position: absolute;
+        left: 15px;
+        color: #9e9e9e;
+        pointer-events: none;
+        transform: translateY(1.5rem);
+        transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .input:focus,
+    .input:valid {
+        outline: none;
+        border: 1.5px solid #1a73e8;
+    }
+
+        .input:focus ~ .user-label {
+            transform: translateY(-50%) scale(0.8);
+            background-color: #ffffff;
+            padding: 0 .2em;
+            color: #2196f3;
+        }
+
+        .input:valid ~ .user-label {
+            transform: translateY(-50%) scale(0.8);
+            background-color: #ffffff;
+            padding: 0 .2em;
+            color: green;
+        }
+
+    .input:valid {
+        border: solid 1.5px green;
+    }
+
+    .btn-login {
+        background-color: #fd8b1d;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn-login:hover {
+            background-color: #fd891dcd;
+        }
 
     .title {
         font-size: 28px;
@@ -68,7 +130,8 @@
         padding-left: 30px;
     }
 
-        .title::before, .title::after {
+        .title::before,
+        .title::after {
             position: absolute;
             content: "";
             height: 16px;
@@ -90,79 +153,6 @@
             animation: pulse 1s linear infinite;
         }
 
-    .message, .signin {
-        color: rgba(88, 87, 87, 0.822);
-        font-size: 14px;
-    }
-
-    .signin {
-        text-align: center;
-    }
-
-        .signin a {
-            color: royalblue;
-        }
-
-            .signin a:hover {
-                text-decoration: underline royalblue;
-            }
-
-    .form label {
-        position: relative;
-    }
-
-        .form label .input {
-            width: 100%;
-            padding: 10px 10px 20px 10px;
-            outline: 0;
-            border: 1px solid rgba(105, 105, 105, 0.397);
-            border-radius: 10px;
-        }
-
-            .form label .input + span {
-                position: absolute;
-                left: 10px;
-                top: 15px;
-                color: grey;
-                font-size: 0.9em;
-                cursor: text;
-                transition: 0.3s ease;
-            }
-
-            .form label .input:placeholder-shown + span {
-                top: 15px;
-                font-size: 0.9em;
-            }
-
-            .form label .input:focus + span, .form label .input:valid + span {
-                top: 30px;
-                font-size: 0.7em;
-                font-weight: 600;
-            }
-
-            .form label .input:valid + span {
-                color: green;
-            }
-
-            .form label .input:focus {
-                border: 1px solid #fd8b1d;
-            }
-
-    .submit {
-        border: none;
-        outline: none;
-        background-color: #fd8b1d;
-        padding: 10px;
-        border-radius: 10px;
-        color: #fff;
-        font-size: 16px;
-        transition: 0.3s ease;
-    }
-
-        .submit:hover {
-            background-color: #fd891dcd;
-        }
-
     @keyframes pulse {
         from {
             transform: scale(0.9);
@@ -174,4 +164,24 @@
             opacity: 0;
         }
     }
+
+    .message {
+        color: rgba(88, 87, 87, 0.822);
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .signin {
+        text-align: center;
+        color: rgba(88, 87, 87, 0.822);
+        font-size: 14px;
+    }
+
+        .signin a {
+            color: royalblue;
+        }
+
+            .signin a:hover {
+                text-decoration: underline royalblue;
+            }
 </style>
