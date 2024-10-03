@@ -1,9 +1,8 @@
-﻿using KlassenSysteem.Server;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace VisionCloud.Server.Controllers
+namespace KlassenSysteem.Server.Controller
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -18,7 +17,7 @@ namespace VisionCloud.Server.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
+        public IActionResult Login([FromBody] LoginModel loginModel)
         {
             if (loginModel == null || string.IsNullOrEmpty(loginModel.Username) || string.IsNullOrEmpty(loginModel.Password))
             {
@@ -40,7 +39,7 @@ namespace VisionCloud.Server.Controllers
             return Ok("Login successful.");
         }
 
-        private string HashPassword(string password, string salt)
+        private static string HashPassword(string password, string salt)
         {
             using (var sha256 = SHA256.Create())
             {
@@ -54,7 +53,7 @@ namespace VisionCloud.Server.Controllers
 
     public class LoginModel
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public required string Username { get; set; }
+        public required string Password { get; set; }
     }
 }
