@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace KlassenSysteem.Server
 {
@@ -8,11 +11,24 @@ namespace KlassenSysteem.Server
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(connectionString));
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Add CORS policy
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
 
             var app = builder.Build();
 
@@ -29,12 +45,29 @@ namespace KlassenSysteem.Server
 
             app.UseAuthorization();
 
+            // Use CORS policy
+            app.UseCors("CorsPolicy");
 
             app.MapControllers();
-
             app.MapFallbackToFile("/index.html");
 
             app.Run();
         }
+    }
+
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<MyModel> MyModels { get; set; }
+    }
+
+    public class MyModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
