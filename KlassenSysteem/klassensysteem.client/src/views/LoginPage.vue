@@ -1,10 +1,10 @@
 <script setup lang="ts">
-    import { ref } from 'vue'; // Voor binding van inputvelden
-    import { useRouter } from 'vue-router'; // Voor het navigeren na succesvolle login
+    import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
 
-    const email = ref(''); // Refs voor e-mail
-    const password = ref(''); // Refs voor wachtwoord
-    const router = useRouter(); // Router instance om te navigeren
+    const email = ref('');
+    const password = ref('');
+    const router = useRouter();
 
     const handleLogin = async () => {
         try {
@@ -20,19 +20,17 @@
             });
 
             if (response.ok) {
-                // Login succesvol
-                console.log('Login succesvol');
-                // Je kunt hier een redirect of een andere actie uitvoeren
-                router.push('/dashboard'); // Verwijs naar het dashboard na inloggen
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+                router.push('/dashboard');
             } else {
-                // Login mislukt
                 const errorMessage = await response.text();
-                console.error('Login mislukt:', errorMessage);
-                alert('Onjuiste gebruikersnaam of wachtwoord.');
+                console.error('Login failed:', errorMessage);
+                alert('Invalid username or password.');
             }
         } catch (error) {
-            console.error('Er is een fout opgetreden tijdens het inloggen:', error);
-            alert('Er is een fout opgetreden. Probeer het later opnieuw.');
+            console.error('Error during login:', error);
+            alert('An error occurred. Please try again later.');
         }
     };
 </script>
@@ -40,30 +38,18 @@
 <template>
     <div>
         <main>
-            <p class="title">Inloggen</p>
-            <p class="message">Log in met je e-mail en wachtwoord om toegang te krijgen.</p>
-
-            <form class="form" @submit.prevent="handleLogin">
+            <p class="title">Login</p>
+            <form @submit.prevent="handleLogin">
                 <div class="input-group">
-                    <input type="email"
-                           v-model="email"
-                           class="input"
-                           required />
-                    <label for="email" class="user-label">E-mail</label>
+                    <input type="email" v-model="email" class="input" required />
+                    <label for="email" class="user-label">Email</label>
                 </div>
-
                 <div class="input-group">
-                    <input type="password"
-                           v-model="password"
-                           class="input"
-                           required />
-                    <label for="password" class="user-label">Wachtwoord</label>
+                    <input type="password" v-model="password" class="input" required />
+                    <label for="password" class="user-label">Password</label>
                 </div>
-
-                <button type="submit" class="btn-login">Inloggen</button>
+                <button type="submit" class="btn-login">Login</button>
             </form>
-
-            <p class="signin">Nog geen account? <router-link to="/register">Registreer</router-link></p>
         </main>
     </div>
 </template>

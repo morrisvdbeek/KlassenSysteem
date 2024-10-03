@@ -1,5 +1,8 @@
 using KlassenSysteem.Server.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 namespace KlassenSysteem.Server
 {
@@ -29,6 +32,25 @@ namespace KlassenSysteem.Server
                 });
             });
 
+            // Add JWT Authentication
+            var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
             var app = builder.Build();
 
             app.UseDefaultFiles();
@@ -42,6 +64,7 @@ namespace KlassenSysteem.Server
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             // Use CORS policy
@@ -68,6 +91,6 @@ namespace KlassenSysteem.Server
     public class MyModel
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public required string Name { get; set; }
     }
 }
