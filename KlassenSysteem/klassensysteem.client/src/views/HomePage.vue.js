@@ -64,8 +64,8 @@ function __VLS_template() {
     // @ts-ignore
     [ButtonSection,];
     // @ts-ignore
-    const __VLS_5 = __VLS_asFunctionalComponent(buttonSection, new buttonSection({}));
-    const __VLS_6 = __VLS_5({}, ...__VLS_functionalComponentArgsRest(__VLS_5));
+    const __VLS_5 = __VLS_asFunctionalComponent(buttonSection, new buttonSection({ waveEnabled: ((true)), }));
+    const __VLS_6 = __VLS_5({ waveEnabled: ((true)), }, ...__VLS_functionalComponentArgsRest(__VLS_5));
     __VLS_styleScopedClasses['home-page'];
     __VLS_styleScopedClasses['welcome-section-container'];
     __VLS_styleScopedClasses['welcome-section'];
