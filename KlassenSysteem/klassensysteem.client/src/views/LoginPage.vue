@@ -1,14 +1,39 @@
 <script setup lang="ts">
     import { ref } from 'vue'; // Voor binding van inputvelden
+    import { useRouter } from 'vue-router'; // Voor het navigeren na succesvolle login
 
-    // Refs voor het opslaan van e-mail en wachtwoord
-    const email = ref('');
-    const password = ref('');
+    const email = ref(''); // Refs voor e-mail
+    const password = ref(''); // Refs voor wachtwoord
+    const router = useRouter(); // Router instance om te navigeren
 
-    // Functie die bij het indienen van het formulier wordt aangeroepen
-    const handleLogin = () => {
-        console.log('Inloggen met:', email.value, password.value);
-        // Voeg hier de inloglogica toe, zoals een API-aanroep voor authenticatie
+    const handleLogin = async () => {
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Username: email.value,
+                    Password: password.value
+                })
+            });
+
+            if (response.ok) {
+                // Login succesvol
+                console.log('Login succesvol');
+                // Je kunt hier een redirect of een andere actie uitvoeren
+                router.push('/dashboard'); // Verwijs naar het dashboard na inloggen
+            } else {
+                // Login mislukt
+                const errorMessage = await response.text();
+                console.error('Login mislukt:', errorMessage);
+                alert('Onjuiste gebruikersnaam of wachtwoord.');
+            }
+        } catch (error) {
+            console.error('Er is een fout opgetreden tijdens het inloggen:', error);
+            alert('Er is een fout opgetreden. Probeer het later opnieuw.');
+        }
     };
 </script>
 
