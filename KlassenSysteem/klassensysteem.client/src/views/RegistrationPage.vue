@@ -1,16 +1,46 @@
 <script setup lang="ts">
     import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
 
-    // Refs voor het opslaan van form gegevens
     const firstName = ref('');
     const lastName = ref('');
     const email = ref('');
     const password = ref('');
+    const confirmPassword = ref('');
+    const router = useRouter();
 
-    // Functie die bij het indienen van het formulier wordt aangeroepen
-    const handleRegister = () => {
-        console.log('Registreren met:', firstName.value, lastName.value, email.value, password.value);
-        // Voeg hier de registratie logica toe, zoals een API-aanroep voor registratie
+    const handleRegister = async () => {
+        if (password.value !== confirmPassword.value) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    FirstName: firstName.value,
+                    LastName: lastName.value,
+                    Email: email.value,
+                    Password: password.value
+                })
+            });
+
+            if (response.ok) {
+                alert('Registration successful!');
+                router.push('/login');
+            } else {
+                const errorMessage = await response.text();
+                console.error('Registration failed:', errorMessage);
+                alert('Registration failed. ' + errorMessage);
+            }
+        } catch (error) {
+            console.error('Error during registration:', error);
+            alert('An error occurred. Please try again later.');
+        }
     };
 </script>
 
@@ -18,43 +48,29 @@
     <div>
         <main>
             <p class="title">Registreren</p>
-            <p class="message">Registreer nu om volledige toegang tot het programma te krijgen.</p>
             <form @submit.prevent="handleRegister">
                 <div class="input-group">
-                    <input type="text"
-                           id="firstName"
-                           v-model="firstName"
-                           class="input"
-                           required />
+                    <input type="text" v-model="firstName" class="input" required />
                     <label for="firstName" class="user-label">Voornaam</label>
                 </div>
                 <div class="input-group">
-                    <input type="text"
-                           id="lastName"
-                           v-model="lastName"
-                           class="input"
-                           required />
+                    <input type="text" v-model="lastName" class="input" required />
                     <label for="lastName" class="user-label">Achternaam</label>
                 </div>
                 <div class="input-group">
-                    <input type="email"
-                           id="email"
-                           v-model="email"
-                           class="input"
-                           required />
+                    <input type="email" v-model="email" class="input" required />
                     <label for="email" class="user-label">Email</label>
                 </div>
                 <div class="input-group">
-                    <input type="password"
-                           id="password"
-                           v-model="password"
-                           class="input"
-                           required />
+                    <input type="password" v-model="password" class="input" required />
                     <label for="password" class="user-label">Wachtwoord</label>
                 </div>
-                <button type="submit" class="btn-register">Account aanmaken</button>
+                <div class="input-group">
+                    <input type="password" v-model="confirmPassword" class="input" required />
+                    <label for="confirmPassword" class="user-label">Bevestig wachtwoord</label>
+                </div>
+                <button type="submit" class="btn-login">Registreren</button>
             </form>
-            <p class="signin">Al een account? <router-link to="/login">Login</router-link></p>
         </main>
     </div>
 </template>
@@ -102,8 +118,7 @@
         border: 1.5px solid #1a73e8;
     }
 
-        .input:focus ~ .user-label
-        {
+        .input:focus ~ .user-label {
             transform: translateY(-50%) scale(0.8);
             background-color: #ffffff;
             padding: 0 .2em;
@@ -117,19 +132,19 @@
             color: green;
         }
 
-        .input:valid {
-            border: solid 1.5px green;
-        }
+    .input:valid {
+        border: solid 1.5px green;
+    }
 
-        .btn-register {
-            background-color: #fd8b1d;
-            color: white;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    .btn-register {
+        background-color: #fd8b1d;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
         .btn-register:hover {
             background-color: #fd891dcd;
