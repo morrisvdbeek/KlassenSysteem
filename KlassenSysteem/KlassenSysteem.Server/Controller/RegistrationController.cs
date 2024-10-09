@@ -18,9 +18,9 @@ namespace KlassenSysteem.Server.Controller
 
         [HttpPost]
         [Route("register")]
-        public IActionResult Register([FromBody] RegisterModel registerModel)
+        public IActionResult Register([FromBody] User registerModel)
         {
-            if (registerModel == null || string.IsNullOrEmpty(registerModel.Email) || string.IsNullOrEmpty(registerModel.Password))
+            if (registerModel == null || string.IsNullOrEmpty(registerModel.Email) || string.IsNullOrEmpty(registerModel.PasswordHash))
             {
                 return BadRequest("Registreren mislukt");
             }
@@ -33,7 +33,7 @@ namespace KlassenSysteem.Server.Controller
 
             // Genereer een salt en hash het wachtwoord
             var salt = GenerateSalt();
-            var hashedPassword = HashPassword(registerModel.Password, salt);
+            var hashedPassword = HashPassword(registerModel.PasswordHash, salt);
 
             var user = new User
             {
@@ -75,13 +75,6 @@ namespace KlassenSysteem.Server.Controller
                 var hash = sha256.ComputeHash(saltedPasswordBytes);
                 return Convert.ToBase64String(hash);
             }
-        }
-        public class RegisterModel
-        {
-            public required string FirstName { get; set; }
-            public required string LastName { get; set; }
-            public required string Email { get; set; }
-            public required string Password { get; set; }
         }
     }
 }
