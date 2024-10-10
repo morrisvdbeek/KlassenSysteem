@@ -21,5 +21,11 @@ export default {
     deleteMyModel(id) {
         return apiClient.delete(`/api/mymodels/${id}`);
     },
+    login(data) {
+        return apiClient.post('/api/Login/login', data);
+    },
+    register(data) {
+        return apiClient.post('/api/Registration/register', data);
+    },
 };
 //# sourceMappingURL=apiService.js.map

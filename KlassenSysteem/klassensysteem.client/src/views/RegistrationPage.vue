@@ -1,7 +1,9 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
+    import apiService from '@/services/apiService';
 
+    const userName = ref('');
     const firstName = ref('');
     const lastName = ref('');
     const email = ref('');
@@ -16,24 +18,19 @@
         }
 
         try {
-            const response = await fetch('/api/Registration/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    FirstName: firstName.value,
-                    LastName: lastName.value,
-                    Email: email.value,
-                    Password: password.value
-                })
+            const response = await apiService.register({
+                FirstName: firstName.value,
+                LastName: lastName.value,
+                Email: email.value,
+                Username: userName.value,
+                Password: password.value
             });
 
-            if (response.ok) {
+            if (response.status === 200 || response.status === 201) {
                 alert('Registration successful!');
                 router.push('/login');
             } else {
-                const errorMessage = await response.text();
+                const errorMessage = response.data || 'An unknown error occurred';
                 console.error('Registration failed:', errorMessage);
                 alert('Registration failed. ' + errorMessage);
             }
@@ -42,6 +39,7 @@
             alert('An error occurred. Please try again later.');
         }
     };
+
 </script>
 
 <template>
@@ -49,6 +47,10 @@
         <main>
             <p class="title">Registreren</p>
             <form @submit.prevent="handleRegister">
+                <div class="input-group">
+                    <input type="text" v-model="userName" class="input" required />
+                    <label for="userName" class="user-label">Gebruikersnaam</label>
+                </div>
                 <div class="input-group">
                     <input type="text" v-model="firstName" class="input" required />
                     <label for="firstName" class="user-label">Voornaam</label>

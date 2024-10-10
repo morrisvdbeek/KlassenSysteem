@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
+    import apiService from '@/services/apiService';
 
     const email = ref('');
     const password = ref('');
@@ -22,7 +23,12 @@
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
-                router.push('/dashboard');
+
+                // Fetch models after login
+                const modelsResponse = await apiService.login({
+                    headers: { 'Authorization': `Bearer ${data.token}` }
+                });
+                router.push({ name: 'dashboard', params: { models: modelsResponse.data } });
             } else {
                 const errorMessage = await response.text();
                 console.error('Login failed:', errorMessage);

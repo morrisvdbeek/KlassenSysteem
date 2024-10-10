@@ -16,7 +16,6 @@
     interface Model {
         id: number;
         name: string;
-        // Add other properties if necessary
     }
 
     export default defineComponent({

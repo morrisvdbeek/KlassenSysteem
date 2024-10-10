@@ -18,22 +18,23 @@ namespace KlassenSysteem.Server.Controller
 
         [HttpPost]
         [Route("register")]
-        public IActionResult Register([FromBody] User registerModel)
+        public IActionResult Register([FromBody] UserRegistrationModel registerModel) 
         {
-            if (registerModel == null || string.IsNullOrEmpty(registerModel.Email) || string.IsNullOrEmpty(registerModel.PasswordHash))
+            // Ensure the required fields are provided
+            if (registerModel == null || string.IsNullOrEmpty(registerModel.Email) || string.IsNullOrEmpty(registerModel.Password))
             {
-                return BadRequest("Registreren mislukt");
+                return BadRequest("Registration failed: missing required fields.");
             }
 
-            // Controleer of er al een gebruiker met dit e-mailadres bestaat
+            // Check if the user already exists
             if (_context.Users.Any(u => u.Email == registerModel.Email))
             {
-                return BadRequest("Deze email is al in gebruik.");
+                return BadRequest("This email is already in use.");
             }
 
-            // Genereer een salt en hash het wachtwoord
+            // Generate salt and hash the password
             var salt = GenerateSalt();
-            var hashedPassword = HashPassword(registerModel.PasswordHash, salt);
+            var hashedPassword = HashPassword(registerModel.Password, salt); // Hash the plain password
 
             var user = new User
             {
@@ -45,16 +46,11 @@ namespace KlassenSysteem.Server.Controller
                 Salt = salt
             };
 
-            // Sla de gebruiker op naar de database
+            // Save the user to the database
             _context.Users.Add(user);
             _context.SaveChanges();
 
-            return Ok("Succesvol geregistreerd");
-        }
-
-        private string HashPassword(object password, string salt)
-        {
-            throw new NotImplementedException();
+            return Ok("Registration successful");
         }
 
         private static string GenerateSalt()
