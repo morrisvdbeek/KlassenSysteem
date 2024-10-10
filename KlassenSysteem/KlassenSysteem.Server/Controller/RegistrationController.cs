@@ -40,6 +40,7 @@ namespace KlassenSysteem.Server.Controller
                 FirstName = registerModel.FirstName,
                 LastName = registerModel.LastName,
                 Email = registerModel.Email,
+                Username = registerModel.Username,
                 PasswordHash = hashedPassword,
                 Salt = salt
             };

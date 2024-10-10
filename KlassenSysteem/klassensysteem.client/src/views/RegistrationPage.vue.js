@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
@@ -13,7 +15,7 @@ const handleRegister = async () => {
         return;
     }
     try {
-        const response = await fetch('/api/register', {
+        const response = await fetch('/api/Registration/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +43,7 @@ const handleRegister = async () => {
     }
 };
 const __VLS_fnComponent = (await import('vue')).defineComponent({});
-;
+
 let __VLS_functionalComponentProps;
 function __VLS_template() {
     const __VLS_ctx = {};
@@ -64,7 +66,7 @@ function __VLS_template() {
     __VLS_styleScopedClasses['input'];
     __VLS_styleScopedClasses['user-label'];
     __VLS_styleScopedClasses['input'];
-    __VLS_styleScopedClasses['btn-register'];
+    __VLS_styleScopedClasses['btn-registration'];
     __VLS_styleScopedClasses['title'];
     __VLS_styleScopedClasses['title'];
     __VLS_styleScopedClasses['title'];
@@ -96,7 +98,7 @@ function __VLS_template() {
     __VLS_elementAsFunction(__VLS_intrinsicElements.input)({ type: ("password"), ...{ class: ("input") }, required: (true), });
     (__VLS_ctx.confirmPassword);
     __VLS_elementAsFunction(__VLS_intrinsicElements.label, __VLS_intrinsicElements.label)({ for: ("confirmPassword"), ...{ class: ("user-label") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ type: ("submit"), ...{ class: ("btn-login") }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ type: ("submit"), ...{ class: ("btn-registration") }, });
     __VLS_styleScopedClasses['title'];
     __VLS_styleScopedClasses['input-group'];
     __VLS_styleScopedClasses['input'];
@@ -113,7 +115,7 @@ function __VLS_template() {
     __VLS_styleScopedClasses['input-group'];
     __VLS_styleScopedClasses['input'];
     __VLS_styleScopedClasses['user-label'];
-    __VLS_styleScopedClasses['btn-login'];
+    __VLS_styleScopedClasses['btn-registration'];
     var __VLS_slots;
     var __VLS_inheritedAttrs;
     const __VLS_refs = {};
@@ -124,7 +126,7 @@ function __VLS_template() {
         attrs: {},
     };
 }
-;
+
 const __VLS_self = (await import('vue')).defineComponent({
     setup() {
         return {
@@ -142,5 +144,5 @@ export default (await import('vue')).defineComponent({
         return {};
     },
 });
-;
+
 //# sourceMappingURL=RegistrationPage.vue.js.map
