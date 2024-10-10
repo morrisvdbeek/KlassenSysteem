@@ -1,12 +1,36 @@
-import { ref } from 'vue'; // Voor binding van inputvelden
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
-// Refs voor het opslaan van e-mail en wachtwoord
 const email = ref('');
 const password = ref('');
-// Functie die bij het indienen van het formulier wordt aangeroepen
-const handleLogin = () => {
-    console.log('Inloggen met:', email.value, password.value);
-    // Voeg hier de inloglogica toe, zoals een API-aanroep voor authenticatie
+const router = useRouter();
+const handleLogin = async () => {
+    try {
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                Username: email.value,
+                Password: password.value
+            })
+        });
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem('token', data.token);
+            router.push('/dashboard');
+        }
+        else {
+            const errorMessage = await response.text();
+            console.error('Login failed:', errorMessage);
+            alert('Invalid username or password.');
+        }
+    }
+    catch (error) {
+        console.error('Error during login:', error);
+        alert('An error occurred. Please try again later.');
+    }
 };
 const __VLS_fnComponent = (await import('vue')).defineComponent({});
 ;
@@ -45,8 +69,7 @@ function __VLS_template() {
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.main, __VLS_intrinsicElements.main)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("title") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("message") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.form, __VLS_intrinsicElements.form)({ ...{ onSubmit: (__VLS_ctx.handleLogin) }, ...{ class: ("form") }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.form, __VLS_intrinsicElements.form)({ ...{ onSubmit: (__VLS_ctx.handleLogin) }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("input-group") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.input)({ type: ("email"), ...{ class: ("input") }, required: (true), });
     (__VLS_ctx.email);
@@ -56,17 +79,7 @@ function __VLS_template() {
     (__VLS_ctx.password);
     __VLS_elementAsFunction(__VLS_intrinsicElements.label, __VLS_intrinsicElements.label)({ for: ("password"), ...{ class: ("user-label") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ type: ("submit"), ...{ class: ("btn-login") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("signin") }, });
-    const __VLS_0 = __VLS_resolvedLocalAndGlobalComponents.RouterLink;
-    /** @type { [typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, ] } */
-    // @ts-ignore
-    const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0({ to: ("/register"), }));
-    const __VLS_2 = __VLS_1({ to: ("/register"), }, ...__VLS_functionalComponentArgsRest(__VLS_1));
-    __VLS_nonNullable(__VLS_5.slots).default;
-    const __VLS_5 = __VLS_pickFunctionalComponentCtx(__VLS_0, __VLS_2);
     __VLS_styleScopedClasses['title'];
-    __VLS_styleScopedClasses['message'];
-    __VLS_styleScopedClasses['form'];
     __VLS_styleScopedClasses['input-group'];
     __VLS_styleScopedClasses['input'];
     __VLS_styleScopedClasses['user-label'];
@@ -74,7 +87,6 @@ function __VLS_template() {
     __VLS_styleScopedClasses['input'];
     __VLS_styleScopedClasses['user-label'];
     __VLS_styleScopedClasses['btn-login'];
-    __VLS_styleScopedClasses['signin'];
     var __VLS_slots;
     var __VLS_inheritedAttrs;
     const __VLS_refs = {};
