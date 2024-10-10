@@ -136,7 +136,7 @@
         border: solid 1.5px green;
     }
 
-    .btn-register {
+    .btn-login {
         background-color: #fd8b1d;
         color: white;
         padding: 10px;
@@ -146,7 +146,7 @@
         cursor: pointer;
     }
 
-        .btn-register:hover {
+        .btn-login:hover {
             background-color: #fd891dcd;
         }
 
