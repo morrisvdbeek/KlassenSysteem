@@ -69,7 +69,7 @@
                     <input type="password" v-model="confirmPassword" class="input" required />
                     <label for="confirmPassword" class="user-label">Bevestig wachtwoord</label>
                 </div>
-                <button type="submit" class="btn-login">Registreren</button>
+                <button type="submit" class="btn-registration">Registreren</button>
             </form>
         </main>
     </div>
@@ -136,7 +136,7 @@
         border: solid 1.5px green;
     }
 
-    .btn-login {
+    .btn-registration {
         background-color: #fd8b1d;
         color: white;
         padding: 10px;
@@ -146,7 +146,7 @@
         cursor: pointer;
     }
 
-        .btn-login:hover {
+        .btn-registration:hover {
             background-color: #fd891dcd;
         }
 
