@@ -3,35 +3,31 @@
     import { useRouter } from 'vue-router';
     import apiService from '@/services/apiService';
 
-    const email = ref('');
+    const username = ref('');
     const password = ref('');
     const router = useRouter();
 
     const handleLogin = async () => {
         try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    Username: email.value,
-                    Password: password.value
-                })
+            // Use apiService for the login request
+            const response = await apiService.login({
+                Username: username.value,
+                Password: password.value
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('token', data.token);
+            // Check if the login was successful
+            if (response.status === 200 || response.status === 201) {
+                const data = response.data; // Access the data property
 
-                // Fetch models after login
-                const modelsResponse = await apiService.login({
+                localStorage.setItem('token', data.token); // Store the token
+
+                // Fetch models after login if necessary
+                const modelsResponse = await apiService.getMyModels({
                     headers: { 'Authorization': `Bearer ${data.token}` }
                 });
-                router.push({ name: 'dashboard', params: { models: modelsResponse.data } });
+                router.push({ name: 'Dashboard', params: { models: modelsResponse.data } });
             } else {
-                const errorMessage = await response.text();
-                console.error('Login failed:', errorMessage);
+                console.error('Login failed:', response.statusText);
                 alert('Invalid username or password.');
             }
         } catch (error) {
@@ -41,14 +37,15 @@
     };
 </script>
 
+
 <template>
     <div>
         <main>
             <p class="title">Login</p>
             <form @submit.prevent="handleLogin">
                 <div class="input-group">
-                    <input type="email" v-model="email" class="input" required />
-                    <label for="email" class="user-label">Email</label>
+                    <input type="text" v-model="username" class="input" required />
+                    <label for="username" class="user-label">Gebruikersnaam</label>
                 </div>
                 <div class="input-group">
                     <input type="password" v-model="password" class="input" required />
