@@ -86,11 +86,33 @@ namespace KlassenSysteem.Server
 
         public DbSet<MyModel> MyModels { get; set; }
         public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Seed data
+            modelBuilder.Entity<User>().HasData(
+                new User { Id = 1, Username = "admin", PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Admin", LastName = "User", Email = "admin@example.com" },
+                new User { Id = 2, Username = "user", PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Regular", LastName = "User", Email = "user@example.com" }
+            );
+        }
     }
 
     public class MyModel
     {
         public int Id { get; set; }
         public required string Name { get; set; }
+    }
+
+    public class User
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public string Salt { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
     }
 }

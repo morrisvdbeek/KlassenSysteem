@@ -21,13 +21,42 @@ namespace KlassenSysteem.Server.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("KlassenSysteem.Server.Models.User", b =>
+            modelBuilder.Entity("KlassenSysteem.Server.MyModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MyModels");
+                });
+
+            modelBuilder.Entity("KlassenSysteem.Server.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
@@ -44,23 +73,28 @@ namespace KlassenSysteem.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
 
-            modelBuilder.Entity("KlassenSysteem.Server.MyModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MyModels");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "admin@example.com",
+                            FirstName = "Admin",
+                            LastName = "User",
+                            PasswordHash = "hashedpassword",
+                            Salt = "salt",
+                            Username = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "user@example.com",
+                            FirstName = "Regular",
+                            LastName = "User",
+                            PasswordHash = "hashedpassword",
+                            Salt = "salt",
+                            Username = "user"
+                        });
                 });
 #pragma warning restore 612, 618
         }
