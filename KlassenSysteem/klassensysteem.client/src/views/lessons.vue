@@ -1,3 +1,11 @@
+<script setup lang="ts">
+    import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
+    import apiService from '@/services/apiService';
+</script>
+
+
+
 <template>
     <div class="lessons-page">
         <h1>Voeg een Les toe</h1>
@@ -34,26 +42,26 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      newLesson: {
-        name: '',
-        description: '',
-      },
-      lessons: [],
+    export default {
+        data() {
+            return {
+                newLesson: {
+                    name: '',
+                    description: '',
+                },
+                lessons: [],
+            };
+        },
+        methods: {
+            addLesson() {
+                if (this.newLesson.name && this.newLesson.description) {
+                    this.lessons.push({ ...this.newLesson });
+                    this.newLesson.name = '';
+                    this.newLesson.description = '';
+                }
+            },
+        },
     };
-  },
-  methods: {
-    addLesson() {
-      if (this.newLesson.name && this.newLesson.description) {
-        this.lessons.push({ ...this.newLesson });
-        this.newLesson.name = ''; 
-        this.newLesson.description = '';
-      }
-    },
-  },
-};
 </script>
 
 <style scoped>
