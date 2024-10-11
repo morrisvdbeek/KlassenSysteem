@@ -27,19 +27,19 @@ namespace KlassenSysteem.Server.Controller
         {
             if (loginModel == null || string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
             {
-                return BadRequest("Invalid login request.");
+                return BadRequest(new { message = "Invalid login request." });
             }
 
             var user = _context.Users.SingleOrDefault(u => u.Email == loginModel.Email);
             if (user == null)
             {
-                return Unauthorized("A account with this Email Adress does not exist.");
+                return Unauthorized(new { message = "An account with this Email Address does not exist." });
             }
 
             var hashedPassword = HashPassword(loginModel.Password, user.Salt);
             if (user.PasswordHash != hashedPassword)
             {
-                return Unauthorized("Invalid Email adress or password.");
+                return Unauthorized(new { message = "Invalid Email address or password." });
             }
 
             var token = GenerateJwtToken(user);

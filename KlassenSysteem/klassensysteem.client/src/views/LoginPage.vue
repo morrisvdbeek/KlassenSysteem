@@ -18,19 +18,26 @@
             if (response.status === 200 || response.status === 201) {
                 const data = response.data;
 
+                // Store token in localStorage
                 localStorage.setItem('token', data.token);
 
+                // Fetch models after login
                 const modelsResponse = await apiService.getMyModels({
                     headers: { 'Authorization': `Bearer ${data.token}` }
                 });
+
+                // Redirect to dashboard with models
                 router.push({ name: 'Dashboard', params: { models: modelsResponse.data } });
             } else {
-                console.error('Login failed:', response.statusText);
-                errorMessage.value = 'Invalid email address or password.';
+                errorMessage.value = response.data.message || 'Invalid email address or password.';
             }
         } catch (error) {
+            if (error.response && error.response.data) {
+                errorMessage.value = error.response.data.message || 'An error occurred during login.';
+            } else {
+                errorMessage.value = 'An error occurred. Please try again later.';
+            }
             console.error('Error during login:', error);
-            errorMessage.value = 'An error occurred. Please try again later.';
         }
     };
 </script>
