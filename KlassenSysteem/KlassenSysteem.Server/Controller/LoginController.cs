@@ -33,13 +33,13 @@ namespace KlassenSysteem.Server.Controller
             var user = _context.Users.SingleOrDefault(u => u.Email == loginModel.Email);
             if (user == null)
             {
-                return Unauthorized(new { message = "An account with this Email Address does not exist." });
+                return Unauthorized(new { message = "Een account met dit Email Adress bestaat niet." });
             }
 
             var hashedPassword = HashPassword(loginModel.Password, user.Salt);
             if (user.PasswordHash != hashedPassword)
             {
-                return Unauthorized(new { message = "Invalid Email address or password." });
+                return Unauthorized(new { message = "Ongeldige Email Adress of Wachtwoord." });
             }
 
             var token = GenerateJwtToken(user);
