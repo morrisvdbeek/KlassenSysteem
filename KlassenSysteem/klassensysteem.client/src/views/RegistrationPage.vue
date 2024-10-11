@@ -3,7 +3,6 @@
     import { useRouter } from 'vue-router';
     import apiService from '@/services/apiService';
 
-    const userName = ref('');
     const firstName = ref('');
     const lastName = ref('');
     const email = ref('');
@@ -22,7 +21,6 @@
                 FirstName: firstName.value,
                 LastName: lastName.value,
                 Email: email.value,
-                Username: userName.value,
                 Password: password.value
             });
 
@@ -47,10 +45,6 @@
         <main>
             <p class="title">Registreren</p>
             <form @submit.prevent="handleRegister">
-                <div class="input-group">
-                    <input type="text" v-model="userName" class="input" required />
-                    <label for="userName" class="user-label">Gebruikersnaam</label>
-                </div>
                 <div class="input-group">
                     <input type="text" v-model="firstName" class="input" required />
                     <label for="firstName" class="user-label">Voornaam</label>

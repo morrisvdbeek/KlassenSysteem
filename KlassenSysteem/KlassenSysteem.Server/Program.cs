@@ -93,8 +93,8 @@ namespace KlassenSysteem.Server
 
             // Seed data
             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Username = "admin", PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Admin", LastName = "User", Email = "admin@example.com" },
-                new User { Id = 2, Username = "user", PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Regular", LastName = "User", Email = "user@example.com" }
+                new User { Id = 1, PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Admin", LastName = "User", Email = "admin@example.com" },
+                new User { Id = 2, PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Regular", LastName = "User", Email = "user@example.com" }
             );
         }
     }
@@ -108,7 +108,6 @@ namespace KlassenSysteem.Server
     public class User
     {
         public int Id { get; set; }
-        public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string Salt { get; set; }
         public string FirstName { get; set; }

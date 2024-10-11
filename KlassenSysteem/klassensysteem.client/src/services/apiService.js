@@ -6,21 +6,6 @@ const apiClient = axios.create({
     },
 });
 export default {
-    getMyModels() {
-        return apiClient.get('/api/mymodels');
-    },
-    getMyModel(id) {
-        return apiClient.get(`/api/mymodels/${id}`);
-    },
-    createMyModel(data) {
-        return apiClient.post('/api/mymodels', data);
-    },
-    updateMyModel(id, data) {
-        return apiClient.put(`/api/mymodels/${id}`, data);
-    },
-    deleteMyModel(id) {
-        return apiClient.delete(`/api/mymodels/${id}`);
-    },
     login(data) {
         return apiClient.post('/api/Login/login', data);
     },

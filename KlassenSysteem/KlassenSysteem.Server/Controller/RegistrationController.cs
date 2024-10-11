@@ -34,14 +34,13 @@ namespace KlassenSysteem.Server.Controller
 
             // Generate salt and hash the password
             var salt = GenerateSalt();
-            var hashedPassword = HashPassword(registerModel.Password, salt); // Hash the plain password
+            var hashedPassword = HashPassword(registerModel.Password, salt);
 
             var user = new User
             {
                 FirstName = registerModel.FirstName,
                 LastName = registerModel.LastName,
                 Email = registerModel.Email,
-                Username = registerModel.Username,
                 PasswordHash = hashedPassword,
                 Salt = salt
             };

@@ -18,29 +18,32 @@
             if (response.status === 200 || response.status === 201) {
                 const data = response.data;
 
-                // Store token in localStorage
                 localStorage.setItem('token', data.token);
 
-                // Fetch models after login
-                const modelsResponse = await apiService.getMyModels({
-                    headers: { 'Authorization': `Bearer ${data.token}` }
-                });
-
-                // Redirect to dashboard with models
-                router.push({ name: 'Dashboard', params: { models: modelsResponse.data } });
+                router.push('/dashboard');
             } else {
                 errorMessage.value = response.data.message || 'Invalid email address or password.';
             }
-        } catch (error) {
-            if (error.response && error.response.data) {
-                errorMessage.value = error.response.data.message || 'An error occurred during login.';
+        } catch (error: unknown) {
+            if (isAxiosError(error)) {
+                if (error.response && error.response.data && typeof error.response.data === 'object') {
+                    const errorData = error.response.data as { message?: string };
+                    errorMessage.value = errorData.message || 'An error occurred during login.';
+                } else {
+                    errorMessage.value = 'An error occurred. Please try again later.';
+                }
             } else {
-                errorMessage.value = 'An error occurred. Please try again later.';
+                errorMessage.value = 'An unknown error occurred. Please try again later.';
             }
             console.error('Error during login:', error);
         }
     };
+
+    function isAxiosError(error: unknown): error is import('axios').AxiosError {
+        return (error as import('axios').AxiosError).isAxiosError !== undefined;
+    }
 </script>
+
 
 <template>
     <div>

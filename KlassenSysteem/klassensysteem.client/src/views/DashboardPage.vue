@@ -25,10 +25,10 @@
 
             const fetchModels = async () => {
                 try {
-                    const response = await apiService.getMyModels();
-                    models.value = response.data;
+                    //const response = await apiService.getUsers();
+                    //models.value = response.data;
                 } catch (error) {
-                    console.error('Error fetching models:', error);
+                    console.error('Error fetching users:', error);
                 }
             };
 

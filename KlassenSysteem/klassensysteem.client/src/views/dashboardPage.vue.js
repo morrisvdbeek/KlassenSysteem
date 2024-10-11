@@ -1,16 +1,15 @@
 import { defineComponent, ref, onMounted } from 'vue';
-import apiService from '@/services/apiService';
 export default defineComponent({
     name: 'MyModels',
     setup() {
         const models = ref([]);
         const fetchModels = async () => {
             try {
-                const response = await apiService.getMyModels();
-                models.value = response.data;
+                //const response = await apiService.getUsers();
+                //models.value = response.data;
             }
             catch (error) {
-                console.error('Error fetching models:', error);
+                console.error('Error fetching users:', error);
             }
         };
         onMounted(() => {
