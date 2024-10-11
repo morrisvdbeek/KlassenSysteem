@@ -53,7 +53,11 @@ namespace KlassenSysteem.Server.Controller
 
             var claims = new[]
             {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.FirstName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.LastName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.PasswordHash),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
