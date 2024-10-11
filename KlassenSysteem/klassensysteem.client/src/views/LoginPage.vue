@@ -3,7 +3,7 @@
     import { useRouter } from 'vue-router';
     import apiService from '@/services/apiService';
 
-    const username = ref('');
+    const email = ref('');
     const password = ref('');
     const router = useRouter();
 
@@ -11,7 +11,7 @@
         try {
             // Use apiService for the login request
             const response = await apiService.login({
-                Username: username.value,
+                Email: email.value,
                 Password: password.value
             });
 
@@ -44,12 +44,12 @@
             <p class="title">Login</p>
             <form @submit.prevent="handleLogin">
                 <div class="input-group">
-                    <input type="text" v-model="username" class="input" required />
-                    <label for="username" class="user-label">Gebruikersnaam</label>
+                    <input type="email" v-model="email" class="input" required />
+                    <label for="email" class="user-label">Email adress</label>
                 </div>
                 <div class="input-group">
                     <input type="password" v-model="password" class="input" required />
-                    <label for="password" class="user-label">Password</label>
+                    <label for="password" class="user-label">Wachtwoord</label>
                 </div>
                 <button type="submit" class="btn-login">Login</button>
             </form>

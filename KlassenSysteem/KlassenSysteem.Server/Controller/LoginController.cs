@@ -25,21 +25,21 @@ namespace KlassenSysteem.Server.Controller
         [Route("login")]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            if (loginModel == null || string.IsNullOrEmpty(loginModel.Username) || string.IsNullOrEmpty(loginModel.Password))
+            if (loginModel == null || string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
             {
                 return BadRequest("Invalid login request.");
             }
 
-            var user = _context.Users.SingleOrDefault(u => u.Username == loginModel.Username);
+            var user = _context.Users.SingleOrDefault(u => u.Email == loginModel.Email);
             if (user == null)
             {
-                return Unauthorized("Invalid username or password.");
+                return Unauthorized("A account with this Email Adress does not exist.");
             }
 
             var hashedPassword = HashPassword(loginModel.Password, user.Salt);
             if (user.PasswordHash != hashedPassword)
             {
-                return Unauthorized("Invalid username or password.");
+                return Unauthorized("Invalid Email adress or password.");
             }
 
             var token = GenerateJwtToken(user);
@@ -53,7 +53,7 @@ namespace KlassenSysteem.Server.Controller
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -81,7 +81,7 @@ namespace KlassenSysteem.Server.Controller
 
     public class LoginModel
     {
-        public required string Username { get; set; }
+        public required string Email { get; set; }
         public required string Password { get; set; }
     }
 }
