@@ -1,11 +1,17 @@
 <template>
     <div>
-        <h1>My Models</h1>
-        <ul>
-            <li v-for="model in models" :key="model.id">
-                {{ model.name }}
-            </li>
-        </ul>
+        <h1>Dashboard</h1>
+        <div v-if="dashboardData && dashboardData.length > 0">
+            <h2>User List</h2>
+            <ul>
+                <li v-for="user in dashboardData" :key="user.id">
+                    {{ user.firstName }} {{ user.lastName }}
+                </li>
+            </ul>
+        </div>
+        <div v-else>
+            <p>Bezig met laden van gebruikers.</p>
+        </div>
     </div>
 </template>
 
@@ -13,31 +19,26 @@
     import { defineComponent, ref, onMounted } from 'vue';
     import apiService from '@/services/apiService';
 
-    interface Model {
-        id: number;
-        name: string;
-    }
-
     export default defineComponent({
-        name: 'MyModels',
+        name: 'DashboardPage',
         setup() {
-            const models = ref<Model[]>([]);
+            const dashboardData = ref(null);
 
-            const fetchModels = async () => {
+            const fetchDashboardData = async () => {
                 try {
-                    //const response = await apiService.getUsers();
-                    //models.value = response.data;
+                    const response = await apiService.getDashboardData();
+                    dashboardData.value = response.data;
                 } catch (error) {
-                    console.error('Error fetching users:', error);
+                    console.error('Error fetching dashboard data:', error);
                 }
             };
 
             onMounted(() => {
-                fetchModels();
+                fetchDashboardData();
             });
 
             return {
-                models,
+                dashboardData,
             };
         },
     });

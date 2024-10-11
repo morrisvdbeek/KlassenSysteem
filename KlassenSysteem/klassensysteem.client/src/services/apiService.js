@@ -5,12 +5,21 @@ const apiClient = axios.create({
         'Content-Type': 'application/json',
     },
 });
-export default {
+const apiService = {
     login(data) {
         return apiClient.post('/api/Login/login', data);
     },
     register(data) {
         return apiClient.post('/api/Registration/register', data);
     },
+    getDashboardData() {
+        const token = localStorage.getItem('token');
+        return apiClient.get('/api/dashboard', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+    },
 };
+export default apiService;
 //# sourceMappingURL=apiService.js.map

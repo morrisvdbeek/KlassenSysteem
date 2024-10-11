@@ -7,11 +7,21 @@ const apiClient = axios.create({
     },
 });
 
-export default {
+const apiService = {
     login(data: any) {
         return apiClient.post('/api/Login/login', data);
     },
     register(data: any) {
         return apiClient.post('/api/Registration/register', data);
     },
+    getDashboardData() {
+        const token = localStorage.getItem('token');
+        return apiClient.get('/api/dashboard', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+    },
 };
+
+export default apiService;

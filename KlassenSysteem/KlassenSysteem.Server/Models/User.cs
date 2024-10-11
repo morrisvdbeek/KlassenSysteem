@@ -17,4 +17,8 @@
         public required string Email { get; set; }
         public required string Password { get; set; }
     }
+    public class DashboardData
+    {
+        public List<User> Users { get; set; } = new List<User>();
+    }
 }
