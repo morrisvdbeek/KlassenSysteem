@@ -127,11 +127,13 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        width: 100%; 
     }
 
         .btn-login:hover {
             background-color: #fd891dcd;
         }
+
 
     .title {
         font-size: 28px;
