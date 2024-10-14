@@ -2,33 +2,28 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import apiService from '@/services/apiService';
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
-const email = ref('');
+const username = ref('');
 const password = ref('');
 const router = useRouter();
 const handleLogin = async () => {
     try {
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                Username: email.value,
-                Password: password.value
-            })
+        // Use apiService for the login request
+        const response = await apiService.login({
+            Username: username.value,
+            Password: password.value
         });
-        if (response.ok) {
-            const data = await response.json();
-            localStorage.setItem('token', data.token);
-            // Fetch models after login
-            const modelsResponse = await apiService.login({
+        // Check if the login was successful
+        if (response.status === 200 || response.status === 201) {
+            const data = response.data; // Access the data property
+            localStorage.setItem('token', data.token); // Store the token
+            // Fetch models after login if necessary
+            const modelsResponse = await apiService.getMyModels({
                 headers: { 'Authorization': `Bearer ${data.token}` }
             });
-            router.push({ name: 'dashboard', params: { models: modelsResponse.data } });
+            router.push({ name: 'Dashboard', params: { models: modelsResponse.data } });
         }
         else {
-            const errorMessage = await response.text();
-            console.error('Login failed:', errorMessage);
+            console.error('Login failed:', response.statusText);
             alert('Invalid username or password.');
         }
     }
@@ -76,9 +71,8 @@ function __VLS_template() {
     __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("title") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.form, __VLS_intrinsicElements.form)({ ...{ onSubmit: (__VLS_ctx.handleLogin) }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("input-group") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.input)({ type: ("email"), ...{ class: ("input") }, required: (true), });
-    (__VLS_ctx.email);
-    __VLS_elementAsFunction(__VLS_intrinsicElements.label, __VLS_intrinsicElements.label)({ for: ("email"), ...{ class: ("user-label") }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.input)({ type: ("text"), value: ((__VLS_ctx.username)), ...{ class: ("input") }, required: (true), });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.label, __VLS_intrinsicElements.label)({ for: ("username"), ...{ class: ("user-label") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("input-group") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.input)({ type: ("password"), ...{ class: ("input") }, required: (true), });
     (__VLS_ctx.password);
@@ -106,7 +100,7 @@ function __VLS_template() {
 const __VLS_self = (await import('vue')).defineComponent({
     setup() {
         return {
-            email: email,
+            username: username,
             password: password,
             handleLogin: handleLogin,
         };

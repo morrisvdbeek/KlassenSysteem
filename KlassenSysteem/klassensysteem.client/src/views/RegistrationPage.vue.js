@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import apiService from '@/services/apiService';
@@ -40,7 +38,7 @@ const handleRegister = async () => {
     }
 };
 const __VLS_fnComponent = (await import('vue')).defineComponent({});
-
+;
 let __VLS_functionalComponentProps;
 function __VLS_template() {
     const __VLS_ctx = {};
@@ -129,7 +127,7 @@ function __VLS_template() {
         attrs: {},
     };
 }
-
+;
 const __VLS_self = (await import('vue')).defineComponent({
     setup() {
         return {
@@ -148,5 +146,5 @@ export default (await import('vue')).defineComponent({
         return {};
     },
 });
-
+;
 //# sourceMappingURL=RegistrationPage.vue.js.map

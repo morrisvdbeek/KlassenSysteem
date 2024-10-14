@@ -1,11 +1,4 @@
-import { useRouter } from 'vue-router'; // Vue router importeren
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
-// De router instantie gebruiken om routes aan te sturen
-const router = useRouter();
-// Functie om naar de login pagina te navigeren
-const goToLogin = () => {
-    router.push('/login'); // Zorg dat '/login' verwijst naar de juiste login route
-};
 const __VLS_fnComponent = (await import('vue')).defineComponent({});
 ;
 let __VLS_functionalComponentProps;
