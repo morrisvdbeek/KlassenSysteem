@@ -3,38 +3,45 @@
     import { useRouter } from 'vue-router';
     import apiService from '@/services/apiService';
 
-    const username = ref('');
+    const email = ref('');
     const password = ref('');
+    const errorMessage = ref('');
     const router = useRouter();
 
     const handleLogin = async () => {
         try {
-            // Use apiService for the login request
             const response = await apiService.login({
-                Username: username.value,
+                Email: email.value,
                 Password: password.value
             });
 
-            // Check if the login was successful
             if (response.status === 200 || response.status === 201) {
-                const data = response.data; // Access the data property
+                const data = response.data;
 
-                localStorage.setItem('token', data.token); // Store the token
+                localStorage.setItem('token', data.token);
 
-                // Fetch models after login if necessary
-                const modelsResponse = await apiService.getMyModels({
-                    headers: { 'Authorization': `Bearer ${data.token}` }
-                });
-                router.push({ name: 'Dashboard', params: { models: modelsResponse.data } });
+                router.push('/dashboard');
             } else {
-                console.error('Login failed:', response.statusText);
-                alert('Invalid username or password.');
+                errorMessage.value = response.data.message || 'Invalid email address or password.';
             }
-        } catch (error) {
+        } catch (error: unknown) {
+            if (isAxiosError(error)) {
+                if (error.response && error.response.data && typeof error.response.data === 'object') {
+                    const errorData = error.response.data as { message?: string };
+                    errorMessage.value = errorData.message || 'An error occurred during login.';
+                } else {
+                    errorMessage.value = 'An error occurred. Please try again later.';
+                }
+            } else {
+                errorMessage.value = 'An unknown error occurred. Please try again later.';
+            }
             console.error('Error during login:', error);
-            alert('An error occurred. Please try again later.');
         }
     };
+
+    function isAxiosError(error: unknown): error is import('axios').AxiosError {
+        return (error as import('axios').AxiosError).isAxiosError !== undefined;
+    }
 </script>
 
 
@@ -42,10 +49,11 @@
     <div>
         <main>
             <p class="title">Login</p>
+            <div v-if="errorMessage" class="error-box">{{ errorMessage }}</div>
             <form @submit.prevent="handleLogin">
                 <div class="input-group">
-                    <input type="text" v-model="username" class="input" required />
-                    <label for="username" class="user-label">Gebruikersnaam</label>
+                    <input type="email" v-model="email" class="input" required />
+                    <label for="email" class="user-label">Email address</label>
                 </div>
                 <div class="input-group">
                     <input type="password" v-model="password" class="input" required />
@@ -62,6 +70,16 @@
         padding: 25px;
         max-width: 55vw;
         margin: 0 auto;
+    }
+
+    .error-box {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 20px;
+        text-align: center;
     }
 
     .form {
@@ -127,11 +145,13 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        width: 100%;
     }
 
         .btn-login:hover {
             background-color: #fd891dcd;
         }
+
 
     .title {
         font-size: 28px;

@@ -40,14 +40,16 @@ namespace KlassenSysteem.Server
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.RequireHttpsMetadata = false;
+                options.RequireHttpsMetadata = true;
                 options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidateIssuer = true,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = builder.Configuration["Jwt:Audience"]
                 };
             });
 
@@ -64,11 +66,11 @@ namespace KlassenSysteem.Server
 
             app.UseHttpsRedirection();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
-
             // Use CORS policy
             app.UseCors("CorsPolicy");
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllers();
             app.MapFallbackToFile("/index.html");
@@ -93,8 +95,8 @@ namespace KlassenSysteem.Server
 
             // Seed data
             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Username = "admin", PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Admin", LastName = "User", Email = "admin@example.com" },
-                new User { Id = 2, Username = "user", PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Regular", LastName = "User", Email = "user@example.com" }
+                new User { Id = 1, PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Admin", LastName = "User", Email = "admin@example.com" },
+                new User { Id = 2, PasswordHash = "hashedpassword", Salt = "salt", FirstName = "Regular", LastName = "User", Email = "user@example.com" }
             );
         }
     }
@@ -108,7 +110,6 @@ namespace KlassenSysteem.Server
     public class User
     {
         public int Id { get; set; }
-        public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string Salt { get; set; }
         public string FirstName { get; set; }

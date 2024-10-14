@@ -21,23 +21,6 @@ namespace KlassenSysteem.Server.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("KlassenSysteem.Server.MyModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MyModels");
-                });
-
             modelBuilder.Entity("KlassenSysteem.Server.User", b =>
                 {
                     b.Property<int>("Id")
@@ -66,10 +49,6 @@ namespace KlassenSysteem.Server.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -83,7 +62,6 @@ namespace KlassenSysteem.Server.Migrations
                             LastName = "User",
                             PasswordHash = "hashedpassword",
                             Salt = "salt",
-                            Username = "admin"
                         },
                         new
                         {
@@ -93,7 +71,6 @@ namespace KlassenSysteem.Server.Migrations
                             LastName = "User",
                             PasswordHash = "hashedpassword",
                             Salt = "salt",
-                            Username = "user"
                         });
                 });
 #pragma warning restore 612, 618

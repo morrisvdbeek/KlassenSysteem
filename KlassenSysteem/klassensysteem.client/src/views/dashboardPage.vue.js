@@ -1,23 +1,23 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import apiService from '@/services/apiService';
 export default defineComponent({
-    name: 'MyModels',
+    name: 'DashboardPage',
     setup() {
-        const models = ref([]);
-        const fetchModels = async () => {
+        const dashboardData = ref(null);
+        const fetchDashboardData = async () => {
             try {
-                const response = await apiService.getMyModels();
-                models.value = response.data;
+                const response = await apiService.getDashboardData();
+                dashboardData.value = response.data;
             }
             catch (error) {
-                console.error('Error fetching models:', error);
+                console.error('Error fetching dashboard data:', error);
             }
         };
         onMounted(() => {
-            fetchModels();
+            fetchDashboardData();
         });
         return {
-            models,
+            dashboardData,
         };
     },
 });
@@ -41,10 +41,19 @@ function __VLS_template() {
     let __VLS_resolvedLocalAndGlobalComponents;
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1)({});
-    __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
-    for (const [model] of __VLS_getVForSourceType((__VLS_ctx.models))) {
-        __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({ key: ((model.id)), });
-        (model.name);
+    if (__VLS_ctx.dashboardData && __VLS_ctx.dashboardData.length > 0) {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
+        __VLS_elementAsFunction(__VLS_intrinsicElements.h2, __VLS_intrinsicElements.h2)({});
+        __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
+        for (const [user] of __VLS_getVForSourceType((__VLS_ctx.dashboardData))) {
+            __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({ key: ((user.id)), });
+            (user.firstName);
+            (user.lastName);
+        }
+    }
+    else {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
+        __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
     }
     var __VLS_slots;
     var __VLS_inheritedAttrs;

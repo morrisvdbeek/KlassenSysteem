@@ -3,6 +3,7 @@ import Home from '@/views/HomePage.vue';
 import Login from '@/views/LoginPage.vue';
 import Register from '@/views/RegistrationPage.vue';
 import Dashboard from '@/views/DashboardPage.vue';
+import lessonsVue from '../views/lessons.vue';
 
 const routes = [
     {
@@ -25,6 +26,11 @@ const routes = [
         name: 'Dashboard',
         component: Dashboard,
         meta: { requiresAuth: true }
+    },
+    {
+        path: '/lessons',  
+        name: 'lessons',
+        component: lessonsVue
     }
 ];
 

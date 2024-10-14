@@ -5,27 +5,21 @@ const apiClient = axios.create({
         'Content-Type': 'application/json',
     },
 });
-export default {
-    getMyModels() {
-        return apiClient.get('/api/mymodels');
-    },
-    getMyModel(id) {
-        return apiClient.get(`/api/mymodels/${id}`);
-    },
-    createMyModel(data) {
-        return apiClient.post('/api/mymodels', data);
-    },
-    updateMyModel(id, data) {
-        return apiClient.put(`/api/mymodels/${id}`, data);
-    },
-    deleteMyModel(id) {
-        return apiClient.delete(`/api/mymodels/${id}`);
-    },
+const apiService = {
     login(data) {
         return apiClient.post('/api/Login/login', data);
     },
     register(data) {
         return apiClient.post('/api/Registration/register', data);
     },
+    getDashboardData() {
+        const token = localStorage.getItem('token');
+        return apiClient.get('/api/dashboard', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+    },
 };
+export default apiService;
 //# sourceMappingURL=apiService.js.map

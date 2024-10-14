@@ -1,8 +1,32 @@
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
 import waveSection from "@/shared/components/wave-section.vue";
 import buttonSection from "@/shared/components/button-section.vue";
 import "../app/main/css/welcome-section.css";
 import "../app/main/css/button-section.css";
+
+const fullName = ref("");
+
+const getFullNameFromToken = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    try {
+      const decodedToken = JSON.parse(atob(token.split(".")[1]));
+      const subArray = decodedToken.sub;
+      if (Array.isArray(subArray) && subArray.length >= 3) {
+        const firstName = subArray[1]; // Voornaam
+        const lastName = subArray[2]; // Achternaam
+        fullName.value = `${firstName} ${lastName}`.trim();
+      }
+    } catch (error) {
+      console.error("Fout bij het decoderen van de token:", error);
+    }
+  }
+};
+
+onMounted(() => {
+  getFullNameFromToken();
+});
 </script>
 
 <template>
@@ -18,10 +42,11 @@ import "../app/main/css/button-section.css";
             >
               Klassensysteem
             </h2>
-            <p class="mt-6 text-lg leading-8 text-gray-300">Naam leerling</p>
-            <!-- TODO: Naam bepalen na inloggen-->
-            <p class="text-lg text-gray-300">Klas: SAI-4IT22A</p>
+            <p v-if="fullName" class="mt-6 text-lg leading-8 text-gray-300">
+              Welkom terug {{ fullName }}!
+            </p>
             <!-- TODO: Klas bepalen na inloggen-->
+            <!-- <p class="text-lg text-gray-300">Klas: SAI-4IT22A</p> -->
           </div>
           <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none"></div>
         </div>

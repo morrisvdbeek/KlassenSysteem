@@ -2,7 +2,6 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import apiService from '@/services/apiService';
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
-const userName = ref('');
 const firstName = ref('');
 const lastName = ref('');
 const email = ref('');
@@ -19,7 +18,6 @@ const handleRegister = async () => {
             FirstName: firstName.value,
             LastName: lastName.value,
             Email: email.value,
-            Username: userName.value,
             Password: password.value
         });
         if (response.status === 200 || response.status === 201) {
@@ -76,9 +74,6 @@ function __VLS_template() {
     __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("title") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.form, __VLS_intrinsicElements.form)({ ...{ onSubmit: (__VLS_ctx.handleRegister) }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("input-group") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.input)({ type: ("text"), value: ((__VLS_ctx.userName)), ...{ class: ("input") }, required: (true), });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.label, __VLS_intrinsicElements.label)({ for: ("userName"), ...{ class: ("user-label") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("input-group") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.input)({ type: ("text"), value: ((__VLS_ctx.firstName)), ...{ class: ("input") }, required: (true), });
     __VLS_elementAsFunction(__VLS_intrinsicElements.label, __VLS_intrinsicElements.label)({ for: ("firstName"), ...{ class: ("user-label") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("input-group") }, });
@@ -113,9 +108,6 @@ function __VLS_template() {
     __VLS_styleScopedClasses['input-group'];
     __VLS_styleScopedClasses['input'];
     __VLS_styleScopedClasses['user-label'];
-    __VLS_styleScopedClasses['input-group'];
-    __VLS_styleScopedClasses['input'];
-    __VLS_styleScopedClasses['user-label'];
     __VLS_styleScopedClasses['btn-registration'];
     var __VLS_slots;
     var __VLS_inheritedAttrs;
@@ -131,7 +123,6 @@ function __VLS_template() {
 const __VLS_self = (await import('vue')).defineComponent({
     setup() {
         return {
-            userName: userName,
             firstName: firstName,
             lastName: lastName,
             email: email,
