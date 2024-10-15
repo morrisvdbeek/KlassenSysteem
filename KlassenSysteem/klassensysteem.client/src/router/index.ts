@@ -3,7 +3,7 @@ import Home from '@/views/HomePage.vue';
 import Login from '@/views/LoginPage.vue';
 import Register from '@/views/RegistrationPage.vue';
 import Dashboard from '@/views/DashboardPage.vue';
-import lessonsVue from '../views/lessons.vue';
+import Lesson from '@/views/LessonPage.vue';
 
 const routes = [
     {
@@ -30,7 +30,7 @@ const routes = [
     {
         path: '/lessons',  
         name: 'lessons',
-        component: lessonsVue
+        component: Lesson
     }
 ];
 
