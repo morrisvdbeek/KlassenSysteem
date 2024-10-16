@@ -22,6 +22,9 @@ const apiService = {
             }
         });
     },
+    refreshToken(refreshToken: string) {
+        return apiClient.post('/api/Login/refresh-token', { token: refreshToken });
+    }
 };
 
 export default apiService;
