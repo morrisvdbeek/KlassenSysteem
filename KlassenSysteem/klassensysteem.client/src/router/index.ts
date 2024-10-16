@@ -3,7 +3,7 @@ import Home from '@/views/HomePage.vue';
 import Login from '@/views/LoginPage.vue';
 import Register from '@/views/RegistrationPage.vue';
 import Dashboard from '@/views/DashboardPage.vue';
-import Lesson from '@/views/LessonPage.vue';
+import Lessons from '@/views/LessonPage.vue';  
 
 const routes = [
     {
@@ -28,9 +28,10 @@ const routes = [
         meta: { requiresAuth: true }
     },
     {
-        path: '/lessons',  
-        name: 'lessons',
-        component: Lesson
+        path: '/lessons',
+        name: 'Lessons',
+        component: Lessons,
+        meta: { requiresAuth: true }
     }
 ];
 

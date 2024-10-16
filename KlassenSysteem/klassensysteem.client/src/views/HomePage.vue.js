@@ -1,8 +1,30 @@
+import { ref, onMounted } from "vue";
 import waveSection from "@/shared/components/wave-section.vue";
 import buttonSection from "@/shared/components/button-section.vue";
 import "../app/main/css/welcome-section.css";
 import "../app/main/css/button-section.css";
 const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
+const fullName = ref("");
+const getFullNameFromToken = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+        try {
+            const decodedToken = JSON.parse(atob(token.split(".")[1]));
+            const subArray = decodedToken.sub;
+            if (Array.isArray(subArray) && subArray.length >= 3) {
+                const firstName = subArray[1]; // Voornaam
+                const lastName = subArray[2]; // Achternaam
+                fullName.value = `${firstName} ${lastName}`.trim();
+            }
+        }
+        catch (error) {
+            console.error("Fout bij het decoderen van de token:", error);
+        }
+    }
+};
+onMounted(() => {
+    getFullNameFromToken();
+});
 const __VLS_fnComponent = (await import('vue')).defineComponent({});
 ;
 let __VLS_functionalComponentProps;
@@ -35,8 +57,10 @@ function __VLS_template() {
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("mx-auto max-w-7xl px-6 lg:px-8") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("mx-auto max-w-2xl lg:mx-0") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.h2, __VLS_intrinsicElements.h2)({ ...{ class: ("text-4xl font-bold tracking-tight text-white sm:text-6xl") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("mt-6 text-lg leading-8 text-gray-300") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("text-lg text-gray-300") }, });
+    if (__VLS_ctx.fullName) {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("mt-6 text-lg leading-8 text-gray-300") }, });
+        (__VLS_ctx.fullName);
+    }
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none") }, });
     // @ts-ignore
     [WaveSection,];
@@ -90,8 +114,6 @@ function __VLS_template() {
     __VLS_styleScopedClasses['text-lg'];
     __VLS_styleScopedClasses['leading-8'];
     __VLS_styleScopedClasses['text-gray-300'];
-    __VLS_styleScopedClasses['text-lg'];
-    __VLS_styleScopedClasses['text-gray-300'];
     __VLS_styleScopedClasses['mx-auto'];
     __VLS_styleScopedClasses['mt-10'];
     __VLS_styleScopedClasses['max-w-2xl'];
@@ -119,6 +141,7 @@ const __VLS_self = (await import('vue')).defineComponent({
         return {
             waveSection: waveSection,
             buttonSection: buttonSection,
+            fullName: fullName,
         };
     },
 });

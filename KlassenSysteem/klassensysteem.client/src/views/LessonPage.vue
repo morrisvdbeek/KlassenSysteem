@@ -1,10 +1,21 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { useRouter } from 'vue-router';
-    import apiService from '@/services/apiService';
+
+    const newLesson = ref({
+        name: '',
+        description: ''
+    });
+
+    const lessons = ref<any[]>([]);
+
+    const addLesson = () => {
+        if (newLesson.value.name && newLesson.value.description) {
+            lessons.value.push({ ...newLesson.value });
+            newLesson.value.name = '';
+            newLesson.value.description = '';
+        }
+    };
 </script>
-
-
 
 <template>
     <div class="lessons-page">
@@ -40,29 +51,6 @@
         </ul>
     </div>
 </template>
-
-<script lang="ts">
-    export default {
-        data() {
-            return {
-                newLesson: {
-                    name: '',
-                    description: '',
-                },
-                lessons: [],
-            };
-        },
-        methods: {
-            addLesson() {
-                if (this.newLesson.name && this.newLesson.description) {
-                    this.lessons.push({ ...this.newLesson });
-                    this.newLesson.name = '';
-                    this.newLesson.description = '';
-                }
-            },
-        },
-    };
-</script>
 
 <style scoped>
     .lessons-page {
