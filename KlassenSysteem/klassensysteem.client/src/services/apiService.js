@@ -20,6 +20,9 @@ const apiService = {
             }
         });
     },
+    refreshToken(refreshToken) {
+        return apiClient.post('/api/Login/refresh-token', { token: refreshToken });
+    }
 };
 export default apiService;
 //# sourceMappingURL=apiService.js.map

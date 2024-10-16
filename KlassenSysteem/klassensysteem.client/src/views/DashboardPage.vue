@@ -1,17 +1,10 @@
 <template>
     <div>
         <h1>Dashboard</h1>
-        <div v-if="dashboardData && dashboardData.length > 0">
-            <h2>User List</h2>
-            <ul>
-                <li v-for="user in dashboardData" :key="user.id">
-                    {{ user.firstName }} {{ user.lastName }}
-                </li>
-            </ul>
-        </div>
-        <div v-else>
-            <p>Bezig met laden van gebruikers.</p>
-        </div>
+        <ul v-if="usernames && usernames.length">
+            <li v-for="username in usernames" :key="username">{{ username }}</li>
+        </ul>
+        <p v-else>No users found</p>
     </div>
 </template>
 
@@ -22,28 +15,36 @@
     export default defineComponent({
         name: 'DashboardPage',
         setup() {
-            const dashboardData = ref(null);
+            const usernames = ref<string[]>([]);
 
-            const fetchDashboardData = async () => {
+            const fetchUsernames = async () => {
                 try {
                     const response = await apiService.getDashboardData();
-                    dashboardData.value = response.data;
+                    usernames.value = response.data;
                 } catch (error) {
-                    console.error('Error fetching dashboard data:', error);
+                    console.error('Error fetching usernames:', error);
                 }
             };
 
             onMounted(() => {
-                fetchDashboardData();
+                fetchUsernames();
             });
 
             return {
-                dashboardData,
+                usernames,
             };
         },
     });
 </script>
 
 <style scoped>
-    /* Add your styles here */
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
 </style>

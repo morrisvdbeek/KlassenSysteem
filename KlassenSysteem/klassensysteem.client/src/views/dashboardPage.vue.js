@@ -36,29 +36,10 @@ function __VLS_template() {
     };
     let __VLS_directives;
     let __VLS_styleScopedClasses;
-    // CSS variable injection 
-    // CSS variable injection end 
-    let __VLS_resolvedLocalAndGlobalComponents;
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-    __VLS_elementAsFunction(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1)({});
-    if (__VLS_ctx.dashboardData && __VLS_ctx.dashboardData.length > 0) {
-        __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-        __VLS_elementAsFunction(__VLS_intrinsicElements.h2, __VLS_intrinsicElements.h2)({});
-        __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
-        for (const [user] of __VLS_getVForSourceType((__VLS_ctx.dashboardData))) {
-            __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({ key: ((user.id)), });
-            (user.firstName);
-            (user.lastName);
-        }
-    }
-    else {
-        __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-        __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
-    }
-    var __VLS_slots;
-    var __VLS_inheritedAttrs;
-    const __VLS_refs = {};
-    var $refs;
+    // no template
+    const __VLS_slots = {};
+    const $refs = {};
+    const __VLS_inheritedAttrs = {};
     return {
         slots: __VLS_slots,
         refs: $refs,

@@ -76,6 +76,39 @@ namespace KlassenSysteem.Server.Controller
             return Ok(new { token = newAccessToken });
         }
 
+        [HttpGet]
+        [Route("validate-token")]
+        public IActionResult ValidateToken()
+        {
+            var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized(new { message = "Token is missing." });
+            }
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = true,
+                    ValidIssuer = _configuration["Jwt:Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = _configuration["Jwt:Audience"],
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+                return Ok();
+            }
+            catch
+            {
+                return Unauthorized(new { message = "Invalid token." });
+            }
+        }
+
         private string GenerateRefreshToken()
         {
             var randomNumber = new byte[32];
@@ -94,9 +127,9 @@ namespace KlassenSysteem.Server.Controller
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                new Claim(JwtRegisteredClaimNames.Sub, user.FirstName),
-                new Claim(JwtRegisteredClaimNames.Sub, user.LastName),
-                new Claim(JwtRegisteredClaimNames.Sub, user.PasswordHash),
+                new Claim("firstName", user.FirstName),
+                new Claim("lastName", user.LastName),
+                new Claim("passwordHash", user.PasswordHash),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

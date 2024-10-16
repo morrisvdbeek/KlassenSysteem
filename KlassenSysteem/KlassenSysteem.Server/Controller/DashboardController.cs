@@ -21,24 +21,13 @@ namespace KlassenSysteem.Server.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult<DashboardData> GetDashboardData()
+        public async Task<ActionResult<IEnumerable<string>>> GetDashboardData()
         {
-            var users = _context.Users.Select(u => new KlassenSysteem.Server.Models.User
-            {
-                Id = u.Id,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                Email = u.Email,
-                PasswordHash = u.PasswordHash,
-                Salt = u.Salt
-            }).ToList();
+            var users = await _context.Users
+                .Select(u => $"{u.FirstName} {u.LastName}")
+                .ToListAsync();
 
-            var dashboardData = new DashboardData
-            {
-                Users = users
-            };
-
-            return Ok(dashboardData);
+            return Ok(users);
         }
     }
 }

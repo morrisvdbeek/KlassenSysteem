@@ -40,10 +40,29 @@ const router = createRouter({
     routes
 });
 
-router.beforeEach((to, from, next) => {
+import axios from 'axios';
+
+router.beforeEach(async (to, from, next) => {
     const token = localStorage.getItem('token');
-    if (to.matched.some(record => record.meta.requiresAuth) && !token) {
-        next('/login');
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!token) {
+            next('/login');
+        } else {
+            try {
+                const response = await axios.get('https://localhost:7152/api/Login/validate-token', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                if (response.status === 200) {
+                    next();
+                } else {
+                    next('/login');
+                }
+            } catch (error) {
+                next('/login');
+            }
+        }
     } else {
         next();
     }
