@@ -27,7 +27,7 @@ namespace KlassenSysteem.Server.Controller
         {
             if (loginModel == null || string.IsNullOrEmpty(loginModel.Email) || string.IsNullOrEmpty(loginModel.Password))
             {
-                return BadRequest(new { message = "Invalid login request." });
+                return BadRequest(new { message = "Ongeldige login aanvraag." });
             }
 
             var user = _context.Users.SingleOrDefault(u => u.Email == loginModel.Email);
