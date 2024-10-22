@@ -55,16 +55,19 @@
 <style scoped>
     .lessons-page {
         margin: 20px;
+        color: #5a82b8;
     }
 
     .form-group {
         margin-bottom: 10px;
+        color: #5a82b8;
     }
 
     label {
         display: block;
         font-weight: bold;
         margin-bottom: 5px;
+        color: #5a82b8; 
     }
 
     input,
@@ -72,18 +75,19 @@
         width: 100%;
         padding: 8px;
         box-sizing: border-box;
+        color: #5a82b8; 
     }
 
     button {
         padding: 10px 15px;
-        background-color: #42b983;
-        color: white;
+        background-color: #ff6a00;
+        color: #ffffff; 
         border: none;
         cursor: pointer;
     }
 
         button:hover {
-            background-color: #2c8e5e;
+            background-color: #ff6a00;
         }
 
     ul {
@@ -92,9 +96,10 @@
     }
 
     li {
-        background: #f9f9f9;
+        background: orange;
         margin-bottom: 5px;
         padding: 10px;
         border: 1px solid #ddd;
     }
 </style>
+
