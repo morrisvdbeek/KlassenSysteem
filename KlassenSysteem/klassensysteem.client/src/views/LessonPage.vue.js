@@ -1,27 +1,24 @@
-export default (await import('vue')).defineComponent({
-    data() {
-        return {
-            newLesson: {
-                name: '',
-                description: '',
-            },
-            lessons: [],
-        };
-    },
-    methods: {
-        addLesson() {
-            if (this.newLesson.name && this.newLesson.description) {
-                this.lessons.push({ ...this.newLesson });
-                this.newLesson.name = '';
-                this.newLesson.description = '';
-            }
-        },
-    },
+import { ref } from 'vue';
+const { defineProps, defineSlots, defineEmits, defineExpose, defineModel, defineOptions, withDefaults, } = await import('vue');
+const newLesson = ref({
+    name: '',
+    description: ''
 });
+const lessons = ref([]);
+const addLesson = () => {
+    if (newLesson.value.name && newLesson.value.description) {
+        lessons.value.push({ ...newLesson.value });
+        newLesson.value.name = '';
+        newLesson.value.description = '';
+    }
+};
+const __VLS_fnComponent = (await import('vue')).defineComponent({});
 ;
+let __VLS_functionalComponentProps;
 function __VLS_template() {
     const __VLS_ctx = {};
     const __VLS_localComponents = {
+        ...{},
         ...{},
         ...__VLS_ctx,
     };
@@ -67,5 +64,19 @@ function __VLS_template() {
     };
 }
 ;
-let __VLS_self;
-//# sourceMappingURL=lessons.vue.js.map
+const __VLS_self = (await import('vue')).defineComponent({
+    setup() {
+        return {
+            newLesson: newLesson,
+            lessons: lessons,
+            addLesson: addLesson,
+        };
+    },
+});
+export default (await import('vue')).defineComponent({
+    setup() {
+        return {};
+    },
+});
+;
+//# sourceMappingURL=LessonPage.vue.js.map

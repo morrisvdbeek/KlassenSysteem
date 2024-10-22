@@ -43,7 +43,80 @@ namespace KlassenSysteem.Server.Controller
             }
 
             var token = GenerateJwtToken(user);
-            return Ok(new { token });
+            var refreshToken = GenerateRefreshToken();
+
+            _context.RefreshTokens.Add(new RefreshToken
+            {
+                Token = refreshToken,
+                UserId = user.Id,
+                ExpirationDate = DateTime.UtcNow.AddDays(7)
+            });
+            _context.SaveChanges();
+
+            return Ok(new { token, refreshToken });
+        }
+
+        [HttpPost]
+        [Route("refresh-token")]
+        public IActionResult RefreshToken([FromBody] RefreshTokenModel refreshTokenModel)
+        {
+            var refreshToken = _context.RefreshTokens.SingleOrDefault(rt => rt.Token == refreshTokenModel.Token);
+            if (refreshToken == null || refreshToken.ExpirationDate <= DateTime.UtcNow)
+            {
+                return Unauthorized(new { message = "Invalid or expired refresh token." });
+            }
+
+            var user = _context.Users.SingleOrDefault(u => u.Id == refreshToken.UserId);
+            if (user == null)
+            {
+                return Unauthorized(new { message = "User not found." });
+            }
+
+            var newAccessToken = GenerateJwtToken(user);
+            return Ok(new { token = newAccessToken });
+        }
+
+        [HttpGet]
+        [Route("validate-token")]
+        public IActionResult ValidateToken()
+        {
+            var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized(new { message = "Token is missing." });
+            }
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = true,
+                    ValidIssuer = _configuration["Jwt:Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = _configuration["Jwt:Audience"],
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+                return Ok();
+            }
+            catch
+            {
+                return Unauthorized(new { message = "Invalid token." });
+            }
+        }
+
+        private string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+                return Convert.ToBase64String(randomNumber);
+            }
         }
 
         private string GenerateJwtToken(User user)
@@ -54,9 +127,9 @@ namespace KlassenSysteem.Server.Controller
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                new Claim(JwtRegisteredClaimNames.Sub, user.FirstName),
-                new Claim(JwtRegisteredClaimNames.Sub, user.LastName),
-                new Claim(JwtRegisteredClaimNames.Sub, user.PasswordHash),
+                new Claim("firstName", user.FirstName),
+                new Claim("lastName", user.LastName),
+                new Claim("passwordHash", user.PasswordHash),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -64,7 +137,7 @@ namespace KlassenSysteem.Server.Controller
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddHours(4),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

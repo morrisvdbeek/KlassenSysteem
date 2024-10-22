@@ -19,6 +19,6 @@
     }
     public class DashboardData
     {
-        public List<User> Users { get; set; } = new List<User>();
+        public List<User> Users { get; set; } = [];
     }
 }
