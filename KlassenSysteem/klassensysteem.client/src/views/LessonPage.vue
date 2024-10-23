@@ -1,105 +1,144 @@
-<script setup lang="ts">
-    import { ref } from 'vue';
-
-    const newLesson = ref({
-        name: '',
-        description: ''
-    });
-
-    const lessons = ref<any[]>([]);
-
-    const addLesson = () => {
-        if (newLesson.value.name && newLesson.value.description) {
-            lessons.value.push({ ...newLesson.value });
-            newLesson.value.name = '';
-            newLesson.value.description = '';
-        }
-    };
-</script>
-
 <template>
-    <div class="lessons-page">
-        <h1>Voeg een Les toe</h1>
-
-        <form @submit.prevent="addLesson">
-            <div class="form-group">
-                <label for="lessonName">Naam van de Les:</label>
-                <input type="text"
-                       id="lessonName"
-                       v-model="newLesson.name"
-                       placeholder="Voer een lesnaam in"
-                       required />
+    <div id="app">
+        <div class="quiz-container">
+            <h1>Algemene Kennis.</h1>
+            <div v-if="currentQuestion < questions.length">
+                <p>{{ currentQuestion + 1 }}. {{ questions[currentQuestion].question }}</p>
+                <div>
+                    <button v-for="(answer, index) in questions[currentQuestion].answers"
+                            :key="index"
+                            @click="checkAnswer(index)">
+                        {{ answer }}
+                    </button>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="lessonDescription">Beschrijving van de Les:</label>
-                <textarea id="lessonDescription"
-                          v-model="newLesson.description"
-                          placeholder="Voer een beschrijving in"
-                          required></textarea>
+            <div v-else>
+                <h2>Je hebt {{ score }} van de {{ questions.length }} punten gehaald!</h2>
+                <button @click="resetQuiz">Probeer opnieuw</button>
             </div>
-
-            <button type="submit">Voeg Les toe</button>
-        </form>
-
-        <!-- Lijst met lessen -->
-        <h2>Toegevoegde Lessen</h2>
-        <ul>
-            <li v-for="(lesson, index) in lessons" :key="index">
-                <strong>{{ lesson.name }}</strong>: {{ lesson.description }}
-            </li>
-        </ul>
+        </div>
     </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      currentQuestion: 0,
+      score: 0,
+      questions: [
+        {
+          question: "Wat is de hoofdstad van Frankrijk?",
+          answers: ["Parijs", "Rome", "Londen", "Madrid"],
+          correct: 0,
+        },
+        {
+          question: "Welke planeet staat het dichtst bij de zon?",
+          answers: ["Mars", "Venus", "Mercurius", "Jupiter"],
+          correct: 2,
+        },
+        {
+          question: "Wie schreef 'Romeo en Julia'?",
+          answers: ["Shakespeare", "Homerus", "Dante", "Goethe"],
+          correct: 0,
+        },
+        {
+          question: "Hoeveel continenten zijn er op de wereld?",
+          answers: ["5", "6", "7", "8"],
+          correct: 2,
+        },
+        {
+          question: "Wat is het grootste land ter wereld qua oppervlakte?",
+          answers: ["Canada", "Rusland", "China", "Verenigde Staten"],
+          correct: 1,
+        },
+        {
+          question: "Wat is de kleinste oceaan ter wereld?",
+          answers: ["Atlantische Oceaan", "Indische Oceaan", "Arctische Oceaan", "Stille Oceaan"],
+          correct: 2,
+        },
+        {
+          question: "Wie schilderde de Mona Lisa?",
+          answers: ["Van Gogh", "Michelangelo", "Da Vinci", "Picasso"],
+          correct: 2,
+        },
+        {
+          question: "Wat is de chemische symbool voor water?",
+          answers: ["O2", "H2O", "CO2", "HO"],
+          correct: 1,
+        },
+        {
+          question: "Hoeveel spelers heeft een voetbalteam op het veld?",
+          answers: ["9", "10", "11", "12"],
+          correct: 2,
+        },
+        {
+          question: "Welke taal wordt gesproken in Brazilië?",
+          answers: ["Spaans", "Portugees", "Frans", "Italiaans"],
+          correct: 1,
+        }
+      ],
+    };
+  },
+  methods: {
+    checkAnswer(index) {
+      if (index === this.questions[this.currentQuestion].correct) {
+        this.score++;
+      }
+      this.currentQuestion++;
+    },
+    resetQuiz() {
+      this.currentQuestion = 0;
+      this.score = 0;
+    }
+  }
+};
+</script>
+
 <style scoped>
-    .lessons-page {
-        margin: 20px;
-        color: #5a82b8;
+    #app {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
     }
 
-    .form-group {
-        margin-bottom: 10px;
-        color: #5a82b8;
-    }
-
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #5a82b8; 
-    }
-
-    input,
-    textarea {
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-        color: #5a82b8; 
+    .quiz-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 9000px;
+      margin: 0 auto;
     }
 
     button {
-        padding: 10px 15px;
-        background-color: #ff6a00;
-        color: #ffffff; 
-        border: none;
-        cursor: pointer;
+      margin: 5px;
+      padding: 40px 60px;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
-        button:hover {
-            background-color: #ff6a00;
-        }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
+    button:hover {
+      background-color: darkorange;
+    }
+    H1 {
+      color: #fd8b1d;
+      font-size: 28px;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: -5px;
     }
 
-    li {
-        background: orange;
-        margin-bottom: 5px;
-        padding: 10px;
-        border: 1px solid #ddd;
+    p {
+      color: #333;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 5vh;
+      margin-top: 60px;
     }
 </style>
-
