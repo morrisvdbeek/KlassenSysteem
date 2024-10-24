@@ -27,5 +27,13 @@ namespace KlassenSysteem.Server.Controllers
 
             return Ok("Lesson created successfully");
         }
+
+        [HttpGet]
+        [Route("get-lessons")]
+        public IActionResult GetLessons()
+        {
+            var lessons = _context.Lessons.ToList();
+            return Ok(lessons);
+        }
     }
 }
