@@ -14,6 +14,7 @@
             <div class="actions">
                 <router-link to="/login"><button class="btn-login" @click="login">Login</button></router-link>
                 <router-link to="/register"><button class="btn-registration">Registreren</button></router-link>
+                <router-link to="/lessons"><button class="btn-lesson">Lesson</button></router-link>
                 <router-link to="/" v-if="isLoggedIn"><button class="btn-logout" @click="logout">Logout</button></router-link>
             </div>
         </div>
