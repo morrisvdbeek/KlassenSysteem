@@ -43,7 +43,7 @@ export default {
       this.isLoggedIn = false;
     },
     login() {
-      location.reload(); // Zorg ervoor dat er haakjes zijn om de functie uit te voeren
+      location.reload;
     },
     checkIfLoggedIn() {
       const token = localStorage.getItem("token");
@@ -52,17 +52,6 @@ export default {
   },
   created() {
     this.checkIfLoggedIn();
-  },
-  beforeRouteEnter(to, from, next) {
-    // Hier wordt de pagina herladen voordat het component wordt gerenderd
-    if (!localStorage.getItem("token")) {
-      // Forceer een herlaadactie als de gebruiker niet is ingelogd
-      next((vm) => {
-        vm.login(); // Kan ook een herlaadactie uitvoeren, afhankelijk van wat je wilt bereiken
-      });
-    } else {
-      next();
-    }
   },
 };
 </script>
