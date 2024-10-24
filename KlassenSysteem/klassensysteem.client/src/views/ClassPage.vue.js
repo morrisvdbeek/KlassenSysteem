@@ -34,9 +34,9 @@ function __VLS_template() {
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.label, __VLS_intrinsicElements.label)({ for: ("title"), });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.input, __VLS_intrinsicElements.input)({ type: ("text"), value: ((__VLS_ctx.title)), placeholder: ("titel"), });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.input, __VLS_intrinsicElements.input)({ type: ("text"), value: ((__VLS_ctx.title)), placeholder: ("Klasnaam"), });
     __VLS_elementAsFunction(__VLS_intrinsicElements.label, __VLS_intrinsicElements.label)({ for: ("content"), });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.textarea, __VLS_intrinsicElements.textarea)({ value: ((__VLS_ctx.content)), rows: ("5"), placeholder: ("tekst"), });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.textarea, __VLS_intrinsicElements.textarea)({ value: ((__VLS_ctx.content)), rows: ("5"), placeholder: ("Beschrijving"), });
     __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ onClick: (__VLS_ctx.saveContent) }, });
     if (__VLS_ctx.savedTitle || __VLS_ctx.savedContent) {
         __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
@@ -57,4 +57,4 @@ function __VLS_template() {
 }
 ;
 let __VLS_self;
-//# sourceMappingURL=LessonPage.vue.js.map
+//# sourceMappingURL=ClassPage.vue.js.map
