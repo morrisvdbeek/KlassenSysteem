@@ -29,8 +29,8 @@ const props = defineProps({
         <span class="button-text">Chatten</span>
       </button>
       <button class="button-card">
-        <i class="fas fa-calendar-alt fa-2x"></i>
-        <span class="button-text">Agenda</span>
+          <i class="fa-solid fa-school fa-2x"></i>
+        <span class="button-text">Klassen</span>
       </button>
       <button class="button-card">
         <i class="fas fa-user-cog fa-2x"></i>

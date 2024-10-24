@@ -86,9 +86,10 @@ namespace KlassenSysteem.Server
         {
         }
 
-        public DbSet<MyModel> MyModels { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Lessons> Lessons { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

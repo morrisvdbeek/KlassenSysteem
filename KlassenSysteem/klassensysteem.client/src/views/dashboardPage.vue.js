@@ -3,21 +3,21 @@ import apiService from '@/services/apiService';
 export default defineComponent({
     name: 'DashboardPage',
     setup() {
-        const dashboardData = ref(null);
-        const fetchDashboardData = async () => {
+        const usernames = ref([]);
+        const fetchUsernames = async () => {
             try {
                 const response = await apiService.getDashboardData();
-                dashboardData.value = response.data;
+                usernames.value = response.data;
             }
             catch (error) {
-                console.error('Error fetching dashboard data:', error);
+                console.error('Error fetching usernames:', error);
             }
         };
         onMounted(() => {
-            fetchDashboardData();
+            fetchUsernames();
         });
         return {
-            dashboardData,
+            usernames,
         };
     },
 });
@@ -36,10 +36,25 @@ function __VLS_template() {
     };
     let __VLS_directives;
     let __VLS_styleScopedClasses;
-    // no template
-    const __VLS_slots = {};
-    const $refs = {};
-    const __VLS_inheritedAttrs = {};
+    // CSS variable injection 
+    // CSS variable injection end 
+    let __VLS_resolvedLocalAndGlobalComponents;
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
+    __VLS_elementAsFunction(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1)({});
+    if (__VLS_ctx.usernames && __VLS_ctx.usernames.length) {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.ul, __VLS_intrinsicElements.ul)({});
+        for (const [username] of __VLS_getVForSourceType((__VLS_ctx.usernames))) {
+            __VLS_elementAsFunction(__VLS_intrinsicElements.li, __VLS_intrinsicElements.li)({ key: ((username)), });
+            (username);
+        }
+    }
+    else {
+        __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
+    }
+    var __VLS_slots;
+    var __VLS_inheritedAttrs;
+    const __VLS_refs = {};
+    var $refs;
     return {
         slots: __VLS_slots,
         refs: $refs,
