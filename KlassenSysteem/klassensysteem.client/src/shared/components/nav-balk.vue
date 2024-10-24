@@ -14,11 +14,19 @@
         </div>
       </div>
       <div class="actions">
-        <router-link to="/login" v-if="isLoggedIn == false"
+        <router-link to="/login"
           ><button class="btn-login" @click="login">Login</button></router-link
         >
-        <router-link to="/register" v-if="isLoggedIn == false"
+        <router-link to="/register"
           ><button class="btn-registration">Registreren</button></router-link
+        >
+        <router-link to="/"
+          ><button class="btn-logout" @click="logout">
+            Uitloggen
+          </button></router-link
+        >
+        <router-link to="/lessons"
+          ><button class="btn-lesson">Lesson</button></router-link
         >
         <router-link to="/" v-if="isLoggedIn"
           ><button class="btn-logout" @click="logout">
@@ -26,6 +34,17 @@
           </button></router-link
         >
       </div>
+    </div>
+    <div class="actions">
+      <router-link to="/login" v-if="isLoggedIn == false"
+        ><button class="btn-login" @click="login">Login</button></router-link
+      >
+      <router-link to="/register" v-if="isLoggedIn == false"
+        ><button class="btn-registration">Registreren</button></router-link
+      >
+      <router-link to="/" v-if="isLoggedIn"
+        ><button class="btn-logout" @click="logout">Logout</button></router-link
+      >
     </div>
   </nav>
 </template>
@@ -68,5 +87,15 @@ export default {
 
 main {
   padding: 25px;
+}
+
+.btn-logout {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: 10px;
 }
 </style>
