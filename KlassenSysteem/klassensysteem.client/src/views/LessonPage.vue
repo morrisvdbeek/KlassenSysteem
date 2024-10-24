@@ -1,105 +1,48 @@
-<script setup lang="ts">
-    import { ref } from 'vue';
+<template>
+    <div>
+        <h1>Maak hier een les aan</h1>
 
-    const newLesson = ref({
-        name: '',
-        description: ''
-    });
+        <label for="title">Titel:</label>
+        <input type="text" v-model="title" placeholder="titel">
 
-    const lessons = ref<any[]>([]);
+        <label for="content">Text:</label>
+        <textarea v-model="content" rows="5" placeholder="tekst"></textarea>
 
-    const addLesson = () => {
-        if (newLesson.value.name && newLesson.value.description) {
-            lessons.value.push({ ...newLesson.value });
-            newLesson.value.name = '';
-            newLesson.value.description = '';
+        <button @click="saveContent">Opslaan</button>
+
+        <div v-if="savedTitle || savedContent">
+            <h2>{{ savedTitle }}</h2>
+            <p>{{ savedContent }}</p>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                title: '',
+                content: '',
+                savedTitle: '',
+                savedContent: ''
+            };
+        },
+        methods: {
+            saveContent() {
+                this.savedTitle = this.title;
+                this.savedContent = this.content;
+            }
         }
     };
 </script>
 
-<template>
-    <div class="lessons-page">
-        <h1>Voeg een Les toe</h1>
-
-        <form @submit.prevent="addLesson">
-            <div class="form-group">
-                <label for="lessonName">Naam van de Les:</label>
-                <input type="text"
-                       id="lessonName"
-                       v-model="newLesson.name"
-                       placeholder="Voer een lesnaam in"
-                       required />
-            </div>
-
-            <div class="form-group">
-                <label for="lessonDescription">Beschrijving van de Les:</label>
-                <textarea id="lessonDescription"
-                          v-model="newLesson.description"
-                          placeholder="Voer een beschrijving in"
-                          required></textarea>
-            </div>
-
-            <button type="submit">Voeg Les toe</button>
-        </form>
-
-        <!-- Lijst met lessen -->
-        <h2>Toegevoegde Lessen</h2>
-        <ul>
-            <li v-for="(lesson, index) in lessons" :key="index">
-                <strong>{{ lesson.name }}</strong>: {{ lesson.description }}
-            </li>
-        </ul>
-    </div>
-</template>
-
 <style scoped>
-    .lessons-page {
-        margin: 20px;
-        color: #5a82b8;
-    }
-
-    .form-group {
-        margin-bottom: 10px;
-        color: #5a82b8;
-    }
-
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #5a82b8; 
-    }
-
-    input,
-    textarea {
+    /* Voeg hier je styling toe */
+    input, textarea {
         width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-        color: #5a82b8; 
-    }
-
-    button {
-        padding: 10px 15px;
-        background-color: #ff6a00;
-        color: #ffffff; 
-        border: none;
-        cursor: pointer;
-    }
-
-        button:hover {
-            background-color: #ff6a00;
-        }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        background: orange;
-        margin-bottom: 5px;
         padding: 10px;
-        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
 </style>
-
