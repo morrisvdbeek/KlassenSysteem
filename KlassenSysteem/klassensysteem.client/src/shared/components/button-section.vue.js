@@ -43,14 +43,21 @@ function __VLS_template() {
     }
     __VLS_elementAsFunction(__VLS_intrinsicElements.section, __VLS_intrinsicElements.section)({ ...{ class: ("button-panel-section p-6 bg-gray-100") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("button-panel grid lg:grid-cols-4") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("button-card") }, });
+    const __VLS_5 = __VLS_resolvedLocalAndGlobalComponents.RouterLink;
+    /** @type { [typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, typeof __VLS_components.RouterLink, typeof __VLS_components.routerLink, ] } */
+    // @ts-ignore
+    const __VLS_6 = __VLS_asFunctionalComponent(__VLS_5, new __VLS_5({ to: ("/lessons"), ...{ class: ("button-card") }, }));
+    const __VLS_7 = __VLS_6({ to: ("/lessons"), ...{ class: ("button-card") }, }, ...__VLS_functionalComponentArgsRest(__VLS_6));
+    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({});
     __VLS_elementAsFunction(__VLS_intrinsicElements.i, __VLS_intrinsicElements.i)({ ...{ class: ("fas fa-book-open fa-2x") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({ ...{ class: ("button-text") }, });
+    __VLS_nonNullable(__VLS_10.slots).default;
+    const __VLS_10 = __VLS_pickFunctionalComponentCtx(__VLS_5, __VLS_7);
     __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("button-card") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.i, __VLS_intrinsicElements.i)({ ...{ class: ("fas fa-comments fa-2x") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({ ...{ class: ("button-text") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("button-card") }, });
-    __VLS_elementAsFunction(__VLS_intrinsicElements.i, __VLS_intrinsicElements.i)({ ...{ class: ("fas fa-calendar-alt fa-2x") }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.i, __VLS_intrinsicElements.i)({ ...{ class: ("fa-solid fa-school fa-2x") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({ ...{ class: ("button-text") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ class: ("button-card") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.i, __VLS_intrinsicElements.i)({ ...{ class: ("fas fa-user-cog fa-2x") }, });
@@ -72,8 +79,8 @@ function __VLS_template() {
     __VLS_styleScopedClasses['fa-2x'];
     __VLS_styleScopedClasses['button-text'];
     __VLS_styleScopedClasses['button-card'];
-    __VLS_styleScopedClasses['fas'];
-    __VLS_styleScopedClasses['fa-calendar-alt'];
+    __VLS_styleScopedClasses['fa-solid'];
+    __VLS_styleScopedClasses['fa-school'];
     __VLS_styleScopedClasses['fa-2x'];
     __VLS_styleScopedClasses['button-text'];
     __VLS_styleScopedClasses['button-card'];
