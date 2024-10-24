@@ -14,37 +14,18 @@
         </div>
       </div>
       <div class="actions">
-        <router-link to="/login"
+        <router-link to="/login" v-if="isLoggedIn == false"
           ><button class="btn-login" @click="login">Login</button></router-link
         >
-        <router-link to="/register"
+        <router-link to="/register" v-if="isLoggedIn == false"
           ><button class="btn-registration">Registreren</button></router-link
         >
-        <router-link to="/"
+        <router-link to="/" v-if="isLoggedIn"
           ><button class="btn-logout" @click="logout">
             Uitloggen
           </button></router-link
         >
-        <router-link to="/lessons"
-          ><button class="btn-lesson">Lesson</button></router-link
-        >
-        <router-link to="/" v-if="isLoggedIn"
-          ><button class="btn-logout" @click="logout">
-            Logout
-          </button></router-link
-        >
       </div>
-    </div>
-    <div class="actions">
-      <router-link to="/login" v-if="isLoggedIn == false"
-        ><button class="btn-login" @click="login">Login</button></router-link
-      >
-      <router-link to="/register" v-if="isLoggedIn == false"
-        ><button class="btn-registration">Registreren</button></router-link
-      >
-      <router-link to="/" v-if="isLoggedIn"
-        ><button class="btn-logout" @click="logout">Logout</button></router-link
-      >
     </div>
   </nav>
 </template>
